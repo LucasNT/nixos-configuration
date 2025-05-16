@@ -18,15 +18,19 @@
 
   environment.systemPackages = with pkgs; [ vim wget curl tmux ];
 
-  fonts.packages = with pkgs; [
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
-    cascadia-code
-  ];
+  fonts = {
+    fontconfig.useEmbeddedBitmaps = true;
+    packages = with pkgs; [
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      mplus-outline-fonts.githubRelease
+      noto-fonts
+      dina-font
+      proggyfonts
+      cascadia-code
+    ];
+  };
 
   i18n.defaultLocale = "pt_BR.UTF-8";
 
@@ -42,7 +46,11 @@
     };
   };
 
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
+
   system.stateVersion = lib.mkDefault "24.11";
 
   time.timeZone = "America/Sao_Paulo";

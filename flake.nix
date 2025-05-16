@@ -29,14 +29,14 @@
         ];
       };
 
-      visio-note = let
+      visio-lucasNT = let
         username = "lucas";
         specialArgs = { inherit username; };
       in nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
-          { networking.hostName = "visio-note"; }
+          { networking.hostName = "visio-lucasNT"; }
           ./hosts/base/configuration.nix
           ./hosts/visio-note/configuration.nix
         ];

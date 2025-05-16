@@ -27,8 +27,6 @@
           "discord-canary"
           "electron-27.3.11"
           "discord"
-          "steam"
-          "steam-unwrapped"
         ];
       permittedInsecurePackages = [ "electron-27.3.11" ];
     };
@@ -76,11 +74,13 @@
         dunst
         eww
         gh
+        google-cloud-sdk
         grim
         htop
         logseq
         neovim
         nushell
+        pika-backup
         playerctl
         ripgrep
         rxvt-unicode
@@ -94,14 +94,13 @@
         wofi
         xorg.xrdb
         yadm
-        pika-backup
       ];
     };
   };
 
   xdg.portal = {
     enable = true;
-    config = { common.default = "*"; };
+    config = { common.default = [ "wlr" "gtk" ]; };
     wlr.enable = true;
   };
 }
