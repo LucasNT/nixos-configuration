@@ -28,6 +28,20 @@
           ./hosts/ringo/configuration.nix
         ];
       };
+
+      visio-note = let
+        username = "lucas";
+        specialArgs = { inherit username; };
+      in nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules = [
+          { networking.hostName = "visio-note"; }
+          ./hosts/base/configuration.nix
+          ./hosts/visio-note/configuration.nix
+        ];
+      };
+
     };
   };
 }
