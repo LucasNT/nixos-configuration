@@ -1,7 +1,14 @@
 { config, lib, pkgs, username, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../services/pipewire.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../services/pipewire.nix
+    (import ../../services/docker.nix {
+      inherit config lib pkgs;
+      btrfsEnable = true;
+    })
+  ];
 
   boot = {
     kernelParams = [ "resume_offset=4233897" ];

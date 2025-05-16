@@ -1,7 +1,10 @@
 { config, lib, pkgs, username, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    (import ../../services/docker.nix { inherit config lib pkgs; })
+  ];
 
   users.users."${username}" = {
     isNormalUser = true;
@@ -12,10 +15,4 @@
   programs.git = { enable = true; };
 
   system.stateVersion = lib.mkForce "24.11";
-
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    #storageDriver = "btrfs";
-  };
 }
