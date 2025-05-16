@@ -87,9 +87,9 @@
         alacritty
         borgbackup
         brightnessctl
-        (callPackage ./programs/dwlmsg.nix { })
-        (callPackage ./programs/dwl.nix { })
-        (callPackage ./programs/dwl-tag-viewer.nix { })
+        (callPackage ../../programs/dwlmsg.nix { })
+        (callPackage ../../programs/dwl.nix { })
+        (callPackage ../../programs/dwl-tag-viewer.nix { })
         curl
         discord
         discord-canary
