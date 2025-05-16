@@ -16,6 +16,18 @@
           ./hosts/vm-teste/configuration.nix
         ];
       };
+      ringo = let
+        username = "ringo";
+        specialArgs = { inherit username; };
+      in nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules = [
+          { networking.hostName = "ringo"; }
+          ./hosts/base/configuration.nix
+          ./hosts/ringo/configuration.nix
+        ];
+      };
     };
   };
 }
