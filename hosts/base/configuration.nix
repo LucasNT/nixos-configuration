@@ -42,6 +42,7 @@
     };
   };
 
+  security.polkit.enable = true;
   system.stateVersion = lib.mkDefault "24.11";
 
   time.timeZone = "America/Sao_Paulo";
