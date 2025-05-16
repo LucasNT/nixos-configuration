@@ -47,7 +47,6 @@
   programs = {
     firefox.enable = true;
     hyprlock.enable = true;
-    rpcbind.enable = true;
     steam.enable = true;
   };
 
@@ -69,7 +68,7 @@
       percentageAction = 5;
       usePercentageForPolicy = true;
     };
-    rcpbind.enable = true;
+    rpcbind.enable = true;
   };
 
   users = {
