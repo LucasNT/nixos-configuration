@@ -3,8 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../services/pipewire.nix
-    (import ../../services/docker.nix {
+    ../../programs/pipewire.nix
+    (import ../../programs/docker.nix {
       inherit config lib pkgs;
       btrfsEnable = true;
     })

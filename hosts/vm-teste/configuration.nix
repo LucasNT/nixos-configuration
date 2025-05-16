@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    (import ../../services/docker.nix { inherit config lib pkgs; })
+    (import ../../programs/docker.nix { inherit config lib pkgs; })
   ];
 
   users.users."${username}" = {
