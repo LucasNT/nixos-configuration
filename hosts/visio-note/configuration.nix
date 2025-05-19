@@ -50,9 +50,9 @@
       lidSwitchDocked = "suspend";
     };
     upower = {
-      enable = false;
+      enable = true;
       enableWattsUpPro = false;
-      criticalPowerAction = "Hibernate";
+      criticalPowerAction = "HybridSleep";
       ignoreLid = false;
       noPollBatteries = true;
       percentageLow = 20;
