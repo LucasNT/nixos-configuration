@@ -10,6 +10,11 @@
     })
   ];
 
+  boot = {
+    kernelParams = [ "resume_offset=1158954" ];
+    resumeDevice = "/dev/disk/by-uuid/7ef084d0-c6b8-4264-a677-37f0d2e6a913";
+  };
+
   hardware = {
     graphics.enable = true;
     bluetooth = {
