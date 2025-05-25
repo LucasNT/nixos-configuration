@@ -15,8 +15,8 @@
     resumeDevice = "/dev/disk/by-uuid/3c9e7185-0144-4202-a90d-4d856493250f";
   };
 
-  fileSystems."/home/ringo/Backup" = {
-    device = "192.168.133.6:/files/backup-note";
+  fileSystems."/home/ringo/NAS" = {
+    device = "192.168.133.6:/files/Lucas";
     fsType = "nfs";
     options = [
       "vers=4"
