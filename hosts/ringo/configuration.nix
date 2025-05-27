@@ -112,6 +112,7 @@
         wl-clipboard
         wlr-randr
         wofi
+        xdg-utils
         xorg.xrdb
         yadm
         pika-backup
