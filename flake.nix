@@ -22,7 +22,7 @@
       ringo = let
         username = "ringo";
         specialArgs = { inherit username; };
-      in nixpkgs-24-11.lib.nixosSystem {
+      in nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
@@ -35,7 +35,7 @@
       visio-lucasNT = let
         username = "lucas";
         specialArgs = { inherit username; };
-      in nixpkgs.lib.nixosSystem {
+      in nixpkgs-24-11.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
