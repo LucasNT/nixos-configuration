@@ -61,11 +61,11 @@
     hypridle.enable = true;
     libinput.enable = true;
     logind = {
-      lidSwitch = "hibernate";
+      lidSwitch = "suspend";
       lidSwitchDocked = "suspend";
     };
     upower = {
-      enable = true;
+      enable = false;
       enableWattsUpPro = false;
       criticalPowerAction = "Hibernate";
       ignoreLid = false;
