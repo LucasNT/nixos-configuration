@@ -30,7 +30,10 @@
           { networking.hostName = "ringo"; }
           ./hosts/base/configuration.nix
           ./hosts/ringo/configuration.nix
-          { environment.systemPackages = [ inputs.dwl.packages.default ]; }
+          {
+            environment.systemPackages =
+              [ inputs.dwl.packages.x86_64-linux.default ];
+          }
         ];
       };
 
