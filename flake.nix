@@ -1,16 +1,17 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-24-11.url = "github:NixOS/nixpkgs/nixos-24.11";
+    dwl = { url = "github:LucasNT/dwl/main"; };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-24-11 }: {
+  outputs = { self, nixpkgs-25-05, nixpkgs-24-11, ... }@inputs: {
 
     nixosConfigurations = {
       vm-nixos = let
         username = "lucas";
         specialArgs = { inherit username; };
-      in nixpkgs.lib.nixosSystem {
+      in nixpkgs-25-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
@@ -22,13 +23,14 @@
       ringo = let
         username = "ringo";
         specialArgs = { inherit username; };
-      in nixpkgs.lib.nixosSystem {
+      in nixpkgs-25-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "ringo"; }
           ./hosts/base/configuration.nix
           ./hosts/ringo/configuration.nix
+          { environment.systemPackages = [ inputs.dwl.packages.default ]; }
         ];
       };
 
