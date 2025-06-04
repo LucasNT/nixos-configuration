@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, dwl_local, ... }:
 
 {
   imports = [
@@ -7,6 +7,10 @@
     (import ../../programs/docker.nix {
       inherit config lib pkgs;
       btrfsEnable = true;
+    })
+    (import ../../programs/desktop.nix {
+      inherit config lib pkgs username;
+      dwl = dwl_local;
     })
   ];
 
@@ -53,13 +57,10 @@
 
   programs = {
     firefox.enable = true;
-    hyprlock.enable = true;
     steam.enable = true;
   };
 
   services = {
-    hypridle.enable = true;
-    libinput.enable = true;
     logind = {
       lidSwitch = "suspend";
       lidSwitchDocked = "suspend";
@@ -84,17 +85,12 @@
       isNormalUser = true;
       extraGroups = [ "wheel" "wifi_controller" ];
       packages = with pkgs; [
-        alacritty
         borgbackup
         brightnessctl
-        (callPackage ../../programs/dwlmsg.nix { })
-        (callPackage ../../programs/dwl.nix { })
-        (callPackage ../../programs/dwl-tag-viewer.nix { })
         curl
         discord
         discord-canary
         dunst
-        eww
         gh
         grim
         htop
@@ -103,16 +99,9 @@
         nushell
         playerctl
         ripgrep
-        rxvt-unicode
-        slurp
-        swappy
         tmux
         wget
         wireguard-tools
-        wl-clipboard
-        wlr-randr
-        wofi
-        xdg-utils
         xorg.xrdb
         yadm
         pika-backup
@@ -120,16 +109,4 @@
     };
   };
 
-  xdg.portal = {
-    enable = true;
-    config = {
-      common = {
-        default = [ "gtk" ];
-        "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-        "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-      };
-    };
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
 }

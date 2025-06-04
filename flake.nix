@@ -22,7 +22,10 @@
       };
       ringo = let
         username = "ringo";
-        specialArgs = { inherit username; };
+        specialArgs = {
+          inherit username;
+          dwl_local = inputs.dwl.packages.x86_64-linux.default;
+        };
       in nixpkgs-25-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
@@ -30,10 +33,6 @@
           { networking.hostName = "ringo"; }
           ./hosts/base/configuration.nix
           ./hosts/ringo/configuration.nix
-          {
-            environment.systemPackages =
-              [ inputs.dwl.packages.x86_64-linux.default ];
-          }
         ];
       };
 
