@@ -86,25 +86,20 @@
       extraGroups = [ "wheel" "wifi_controller" ];
       packages = with pkgs; [
         borgbackup
-        brightnessctl
         curl
         discord
         discord-canary
-        dunst
         gh
-        grim
         htop
         logseq
         neovim
         nushell
-        playerctl
+        pika-backup
         ripgrep
         tmux
         wget
         wireguard-tools
-        xorg.xrdb
         yadm
-        pika-backup
       ];
     };
   };

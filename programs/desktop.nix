@@ -12,10 +12,14 @@
     users."${username}" = {
       packages = with pkgs; [
         alacritty
+        brightnessctl
         (callPackage ./dwlmsg.nix { })
         (callPackage ./dwl-tag-viewer.nix { })
+        dunst
         dwl
         eww
+        grim
+        playerctl
         rxvt-unicode
         slurp
         swappy
@@ -23,9 +27,11 @@
         wlr-randr
         wofi
         xdg-utils
+        xorg.xrdb
       ];
     };
   };
+
   xdg.portal = {
     enable = true;
     config = {

@@ -38,7 +38,10 @@
 
       visio-lucasNT = let
         username = "lucas";
-        specialArgs = { inherit username; };
+        specialArgs = {
+          inherit username;
+          dwl_local = inputs.dwl.packages.x86_64-linux.default;
+        };
       in nixpkgs-24-11.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
@@ -46,10 +49,6 @@
           { networking.hostName = "visio-lucasNT"; }
           ./hosts/base/configuration.nix
           ./hosts/visio-note/configuration.nix
-          {
-            environment.systemPackages =
-              [ inputs.dwl.packages.x86_64-linux.default ];
-          }
         ];
       };
 

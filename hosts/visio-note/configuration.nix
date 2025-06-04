@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, dwl_local, ... }:
 
 {
   imports = [
@@ -7,6 +7,10 @@
     (import ../../programs/docker.nix {
       inherit config lib pkgs;
       btrfsEnable = true;
+    })
+    (import ../../programs/desktop.nix {
+      inherit config lib pkgs username;
+      dwl = dwl_local;
     })
   ];
 
@@ -68,36 +72,20 @@
       isNormalUser = true;
       extraGroups = [ "wheel" "wifi_controller" ];
       packages = with pkgs; [
-        alacritty
         borgbackup
-        brightnessctl
-        (callPackage ../../programs/dwlmsg.nix { })
-        (callPackage ../../programs/dwl-tag-viewer.nix { })
         curl
         discord-canary
-        dunst
-        eww
         gh
         google-cloud-sdk
-        grim
         htop
         logseq
         neovim
         nushell
         pika-backup
-        playerctl
         ripgrep
-        rxvt-unicode
-        slurp
-        swappy
         tmux
         wget
         wireguard-tools
-        wl-clipboard
-        wlr-randr
-        wofi
-        xdg-utils
-        xorg.xrdb
         yadm
       ];
     };
