@@ -20,6 +20,7 @@
         eww
         grim
         playerctl
+        rose-pine-cursor
         rxvt-unicode
         slurp
         swappy
