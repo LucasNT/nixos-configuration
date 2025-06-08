@@ -45,7 +45,7 @@
           inherit username;
           dwl_local = inputs.dwl.packages.x86_64-linux.default;
         };
-      in nixpkgs-24-11.lib.nixosSystem {
+      in nixpkgs-25-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
