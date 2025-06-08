@@ -12,7 +12,7 @@
       inherit config lib pkgs username;
       dwl = dwl_local;
     })
-    (import ../../programs/snapper.nix { inherit config lib pkgs; })
+    (import ../../programs/backup.nix { inherit config lib pkgs; })
   ];
 
   boot = {
