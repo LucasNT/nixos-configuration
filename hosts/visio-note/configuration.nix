@@ -19,6 +19,18 @@
     resumeDevice = "/dev/disk/by-uuid/7ef084d0-c6b8-4264-a677-37f0d2e6a913";
   };
 
+  fileSystems."/home/ringo/NAS" = {
+    device = "192.168.133.6:/files/Lucas";
+    fsType = "nfs";
+    options = [
+      "vers=4"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=10"
+      "x-systemd.idle-timeout=1min"
+      "_netdev"
+    ];
+  };
+
   hardware = {
     graphics.enable = true;
     bluetooth = {
