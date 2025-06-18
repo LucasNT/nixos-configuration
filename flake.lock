@@ -21,6 +21,27 @@
         "type": "github"
       }
     },
+    "my_feed_notification": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-25-05"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750027391,
+        "narHash": "sha256-D2dUjGQ7EdswUGBHXWgRBD1GQnKBHCzqtkOPeontBKQ=",
+        "owner": "LucasNT",
+        "repo": "MyFeedNotification",
+        "rev": "d617b440b57f56e9fa98f196371a7dc8c4583360",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LucasNT",
+        "ref": "main",
+        "repo": "MyFeedNotification",
+        "type": "github"
+      }
+    },
     "nixpkgs-24-11": {
       "locked": {
         "lastModified": 1749995256,
@@ -56,6 +77,7 @@
     "root": {
       "inputs": {
         "dwl": "dwl",
+        "my_feed_notification": "my_feed_notification",
         "nixpkgs-24-11": "nixpkgs-24-11",
         "nixpkgs-25-05": "nixpkgs-25-05"
       }

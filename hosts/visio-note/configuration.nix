@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, dwl_local, ... }:
+{ config, lib, pkgs, username, dwl_local, my_feed_notification, ... }:
 
 {
   imports = [
@@ -79,6 +79,23 @@
     };
   };
 
+  systemd.user.timers.my_feed_notification = {
+    enable = true;
+    description = "Timer to test if feed had some problem";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      Unit = "my_feed_notification";
+      OnCalendar = "*-*-* *:0/5:*";
+    };
+  };
+
+  systemd.user.services.my_feed_notification = {
+    script = ''
+      ${my_feed_notification}/bin/MyFeed https://status.cloud.google.com/en/feed.atom
+    '';
+    serviceConfig = { Type = "oneshot"; };
+  };
+
   users = {
     groups = { wifi_controller = { }; };
     users."${username}" = {
@@ -92,6 +109,7 @@
         google-cloud-sdk
         htop
         logseq
+        my_feed_notification
         neovim
         nushell
         pika-backup
