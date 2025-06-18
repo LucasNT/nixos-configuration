@@ -103,6 +103,7 @@
       extraGroups = [ "wheel" "wifi_controller" ];
       packages = with pkgs; [
         borgbackup
+        chromium
         curl
         discord-canary
         gh
@@ -114,6 +115,7 @@
         nushell
         pika-backup
         ripgrep
+        sox
         tmux
         wget
         wireguard-tools
