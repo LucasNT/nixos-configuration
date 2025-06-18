@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-24-11.url = "github:NixOS/nixpkgs/nixos-24.11";
     dwl = {
       url = "github:LucasNT/dwl/main";
       inputs.nixpkgs.follows = "nixpkgs-25-05";
@@ -12,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-25-05, nixpkgs-24-11, ... }@inputs: {
+  outputs = { self, nixpkgs-25-05, ... }@inputs: {
 
     nixosConfigurations = {
       vm-nixos = let
