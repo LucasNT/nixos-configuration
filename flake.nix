@@ -60,6 +60,19 @@
         ];
       };
 
+      momo = let
+        username = "lucas";
+        specialArgs = { inherit username; };
+      in nixpkgs-25-05.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules = [
+          { networking.hostName = "momo"; }
+          ./hosts/base/configuration.nix
+          ./hosts/momo/configuration.nix
+        ];
+      };
+
     };
   };
 }
