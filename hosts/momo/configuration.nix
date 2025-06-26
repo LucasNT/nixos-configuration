@@ -15,6 +15,15 @@
     options = [ "subvol=@Lucas" ];
   };
 
+  services = {
+    nfs.server = {
+      enable = true;
+      exports = ''
+        /files/Lucas 192.168.133.9(rw,nohide,subtree_check)
+      '';
+    };
+  };
+
   users = {
     users."${username}" = {
       isNormalUser = true;
@@ -31,4 +40,6 @@
       ];
     };
   };
+
+  networking.firewall.allowedTCPPorts = [ 2049 ];
 }
