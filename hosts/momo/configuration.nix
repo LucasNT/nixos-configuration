@@ -19,7 +19,7 @@
     nfs.server = {
       enable = true;
       exports = ''
-        /files/Lucas 192.168.133.9(rw,nohide,subtree_check)
+        /files/Lucas 192.168.133.9(rw,nohide,subtree_check) 192.168.133.8(rw,nohide,subtree_check)
       '';
     };
   };
