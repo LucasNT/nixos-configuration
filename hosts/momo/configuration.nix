@@ -26,7 +26,7 @@
     transmission = {
       enable = true;
       package = pkgs.transmission_4;
-      rpc-bind-address = "0.0.0.0";
+      settings = { rpc-bind-address = "0.0.0.0"; };
     };
   };
 
