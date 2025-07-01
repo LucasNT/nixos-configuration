@@ -22,12 +22,17 @@
         /files/Lucas 192.168.133.9(rw,nohide,subtree_check) 192.168.133.8(rw,nohide,subtree_check) 192.168.133.4(rw,nohide,subtree_check)
       '';
     };
+
+    transmission = {
+      enable = true;
+      package = pkgs.transmission_4;
+    };
   };
 
   users = {
     users."${username}" = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "transmission" ];
       packages = with pkgs; [
         curl
         htop
