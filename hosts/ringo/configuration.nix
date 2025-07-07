@@ -4,10 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../programs/pipewire.nix
-    (import ../../programs/docker.nix {
-      inherit config lib pkgs;
-      btrfsEnable = true;
-    })
+    ../../modules/docker.nix
     (import ../../programs/desktop.nix {
       inherit config lib pkgs username;
       dwl = dwl_local;
@@ -59,6 +56,11 @@
   programs = {
     firefox.enable = true;
     steam.enable = true;
+  };
+
+  LucasNT.docker = {
+    enable = true;
+    isBtrfs = true;
   };
 
   services = {
