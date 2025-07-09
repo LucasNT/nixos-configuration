@@ -17,7 +17,7 @@
 
   networking = {
     defaultGateway = "192.168.133.1";
-    nameservers = "1.1.1.1";
+    nameservers = [ "1.1.1.1" ];
     interfaces.enp2s0.ipv4.addresses = [{
       address = "192.168.133.10";
       prefixLength = 24;
