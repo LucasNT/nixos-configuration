@@ -40,7 +40,15 @@
     };
   };
 
-  networking.wireless.enable = true;
+  networking = {
+    wireless.enable = true;
+    firewall = {
+      allowedTCPPortRanges = [{
+        from = 8000;
+        to = 10000;
+      }];
+    };
+  };
 
   nixpkgs = {
     config = {
