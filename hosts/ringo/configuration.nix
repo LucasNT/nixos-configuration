@@ -67,7 +67,7 @@
       lidSwitchDocked = "suspend";
     };
     upower = {
-      enable = false;
+      enable = true;
       enableWattsUpPro = false;
       criticalPowerAction = "Hibernate";
       ignoreLid = false;
