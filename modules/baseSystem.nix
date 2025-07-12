@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let cfg = config.LucasNT.system;
 in {
+  imports = [ ../hosts/base/services/openssh.nix ];
   options.LucasNT.system = {
     isBtrfs = lib.mkOption {
       type = lib.types.bool;
@@ -20,7 +21,7 @@ in {
     };
 
     extraEnvironmentPackage = lib.mkOption {
-      type = lib.types.listOf lib.types.packages;
+      type = lib.types.listOf lib.types.package;
       default = [ ];
       description = "List of extra packages for system environment";
     };
@@ -32,7 +33,7 @@ in {
     };
 
     extraFonts = lib.mkOption {
-      type = lib.types.listOf lib.types.packages;
+      type = lib.types.listOf lib.types.package;
       default = [ ];
       description = "Extra fonts to install in the system";
     };
@@ -41,7 +42,7 @@ in {
 
   config = {
     boot = {
-      kernelParams = [ ] ++ cfg.boot.kernelParams;
+      kernelParams = [ ] ++ cfg.bootKernelParams;
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
@@ -58,7 +59,7 @@ in {
     environment.systemPackages = with pkgs;
       [ vim wget curl tmux ] ++ cfg.extraEnvironmentPackage;
 
-    fonts = lib.mkIf cfg.isServer == false {
+    fonts = lib.mkIf (cfg.isServer == false) {
       fontconfig.useEmbeddedBitmaps = true;
       packages = with pkgs;
         [
@@ -93,8 +94,6 @@ in {
     };
 
     time.timeZone = lib.mkDefault "America/Sao_Paulo";
-
-    imports = [ ../hosts/base/services/openssh.nix ];
 
   };
 }
