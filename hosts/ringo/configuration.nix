@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/baseSystem.nix
     ./hardware-configuration.nix
     ../../programs/pipewire.nix
     ../../modules/docker.nix
@@ -12,8 +13,18 @@
     (import ../../programs/backup.nix { inherit config lib pkgs; })
   ];
 
+  LucasNT.system = {
+    isBtrfs = true;
+    isServer = false;
+    isNotebook = true;
+    enableSSHD = true;
+    username = username;
+    extraEnvironmentPackage = [ ];
+    bootKernelParams = [ "resume_offset=4233897" ];
+    extraFonts = [ ];
+  };
+
   boot = {
-    kernelParams = [ "resume_offset=4233897" ];
     resumeDevice = "/dev/disk/by-uuid/3c9e7185-0144-4202-a90d-4d856493250f";
   };
 
@@ -65,7 +76,7 @@
 
   services = {
     logind = {
-      lidSwitch = "suspend";
+      lidSwitch = "hibernate";
       lidSwitchDocked = "suspend";
     };
     upower = {
@@ -81,6 +92,8 @@
     };
     rpcbind.enable = true;
   };
+
+  system.stateVersion = "24.11";
 
   users = {
     groups = { wifi_controller = { }; };
