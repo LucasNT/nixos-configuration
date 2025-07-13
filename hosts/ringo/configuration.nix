@@ -22,6 +22,18 @@
     extraEnvironmentPackage = [ ];
     bootKernelParams = [ "resume_offset=4233897" ];
     extraFonts = [ ];
+    extraUserPackages = with pkgs; [
+      borgbackup
+      discord-canary
+      gh
+      logseq
+      neovim
+      nushell
+      pika-backup
+      ripgrep
+      sox
+      wireguard-tools
+    ];
   };
 
   boot = {
@@ -40,7 +52,7 @@
     ];
   };
 
-  hardware = {
+  hardware = { # migrado
     graphics.enable = true;
     bluetooth = {
       enable = true;
@@ -48,26 +60,20 @@
     };
   };
 
-  networking.wireless.enable = true;
+  networking.wireless.enable = true; # migrado
 
-  nixpkgs = {
+  nixpkgs = { # precisa de mais configuração
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "discord-canary"
-          "electron-27.3.11"
-          "discord"
           "steam"
           "steam-unwrapped"
         ];
-      permittedInsecurePackages = [ "electron-27.3.11" ];
     };
   };
 
-  programs = {
-    firefox.enable = true;
-    steam.enable = true;
-  };
+  programs = { steam.enable = true; };
 
   LucasNT.docker = {
     enable = true;
@@ -75,49 +81,11 @@
   };
 
   services = {
-    logind = {
-      lidSwitch = "hibernate";
-      lidSwitchDocked = "suspend";
-    };
-    upower = {
-      enable = true;
-      enableWattsUpPro = false;
-      criticalPowerAction = "Hibernate";
-      ignoreLid = false;
-      noPollBatteries = true;
-      percentageLow = 20;
-      percentageCritical = 8;
-      percentageAction = 5;
-      usePercentageForPolicy = true;
-    };
-    rpcbind.enable = true;
+    logind = { lidSwitch = lib.mkForce "hibernate"; };
+    upower = { criticalPowerAction = lib.mkForce "Hibernate"; };
+    rpcbind.enable = true; # não sei se é necessário
   };
 
   system.stateVersion = "24.11";
-
-  users = {
-    groups = { wifi_controller = { }; };
-    users."${username}" = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "wifi_controller" ];
-      packages = with pkgs; [
-        borgbackup
-        curl
-        discord
-        discord-canary
-        gh
-        htop
-        logseq
-        neovim
-        nushell
-        pika-backup
-        ripgrep
-        tmux
-        wget
-        wireguard-tools
-        yadm
-      ];
-    };
-  };
 
 }
