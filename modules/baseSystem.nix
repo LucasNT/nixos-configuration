@@ -38,6 +38,24 @@ in {
       description = "Extra fonts to install in the system";
     };
 
+    extraUserGroups = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "List of extra groups to add user";
+    };
+
+    defaultUserPackages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = with pkgs; [ curl htop tmux wget yadm ];
+      description = "List of default packages to install in user";
+    };
+
+    extraUserPackages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [ ];
+      description = "List of extra packages to install in  the user";
+    };
+
   };
 
   config = {
@@ -74,26 +92,60 @@ in {
         ] ++ cfg.extraFonts;
     };
 
-    i18n.defaultLocale = "pt_BR.UTF-8";
+    hardware.graphics.enable = !cfg.isServer;
 
-    programs = { git.enable = true; };
-
-    nix = {
-      settings.experimental-features = [ "nix-command" "flakes" ];
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-        persistent = true;
-      };
+    hardware.bluetooth = lib.mkIf cfg.isNotebook {
+      enable = true;
+      powerOnBoot = false;
     };
+
+    i18n.defaultLocale = lib.mkDefault "pt_BR.UTF-8";
+
+    networking.wireless.enable = lib.mkDefault cfg.isNotebook;
+
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+      persistent = true;
+    };
+
+    programs.git.enable = true;
+
+    programs.firefox.enable = lib.mkDefault (!cfg.isServer);
 
     security = {
       polkit.enable = true;
       rtkit.enable = true;
     };
 
+    services.logind = lib.mkIf (cfg.isNotebook) {
+      lidSwitch = lib.mkDefault "suspend";
+      lidSwitchDocked = lib.mkDefault "suspend";
+    };
+
+    services.upower = lib.mkIf (cfg.isNotebook) {
+      enable = true;
+      enableWattsUpPro = false;
+      criticalPowerAction = lib.mkDefault "HybridSleep";
+      ignoreLid = false;
+      noPollBatteries = true;
+      percentageLow = 20;
+      percentageCritical = 8;
+      percentageAction = 5;
+      usePercentageForPolicy = true;
+    };
+
     time.timeZone = lib.mkDefault "America/Sao_Paulo";
+
+    users.groups.wifi_controller = lib.mkDefault { };
+
+    users.users."${cfg.username}" = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "wifi_controller" ] ++ cfg.extraUserGroups;
+      packages = cfg.defaultUserPackages ++ cfg.extraUserPackages;
+    };
 
   };
 }
