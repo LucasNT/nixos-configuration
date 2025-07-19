@@ -192,7 +192,7 @@ in {
             (callPackage ../programs/dwlmsg.nix { })
             (callPackage ../programs/dwl-tag-viewer.nix { })
             dunst
-            dwl
+            dwl_local
             eww
             grim
             playerctl
