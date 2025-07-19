@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, dwl_local, ... }:
 let cfg = config.LucasNT.system;
 in {
-  imports = [ ../hosts/base/services/openssh.nix ];
+  imports = [ ../hosts/base/services/openssh.nix ./docker.nix ];
   options.LucasNT.system = {
     isBtrfs = lib.mkOption {
       type = lib.types.bool;
@@ -12,6 +12,8 @@ in {
     isServer = lib.mkEnableOption "is a server machine";
 
     isNotebook = lib.mkEnableOption "is a notebook";
+
+    enableDocker = lib.mkEnableOption "Enable Docker service";
 
     enableSSHD = lib.mkEnableOption "Enable SSHD service";
 
@@ -101,6 +103,11 @@ in {
 
     i18n.defaultLocale = lib.mkDefault "pt_BR.UTF-8";
 
+    LucasNT.docker = lib.mkIf cfg.enableDocker {
+      enable = true;
+      isBtrfs = cfg.isBtrfs;
+    };
+
     networking.wireless.enable = lib.mkDefault cfg.isNotebook;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -115,10 +122,16 @@ in {
 
     programs.firefox.enable = lib.mkDefault (!cfg.isServer);
 
+    programs.hyprlock.enable = !cfg.isServer;
+
     security = {
       polkit.enable = true;
       rtkit.enable = true;
     };
+
+    services.hypridle.enable = !cfg.isServer;
+
+    services.libinput.enable = !cfg.isServer;
 
     services.logind = lib.mkIf (cfg.isNotebook) {
       lidSwitch = lib.mkDefault "suspend";
@@ -137,6 +150,31 @@ in {
       usePercentageForPolicy = true;
     };
 
+    services.pipewire = lib.mkIf (!cfg.isServer) {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse.enable = true;
+      jack.enable = true;
+      wireplumber = {
+        extraConfig = {
+          "10-bluez" = {
+            "bluez5.enable-sbc-xq" = true;
+            "bluez5.enable-msbc" = true;
+            "bluez5.enable-hw-volume" = true;
+            "bluez5.roles" = [ "a2dp_sink" "a2dp_source" "hsp_hs" "hsp_ag" ];
+          };
+          "11-bluetooth-policy" = {
+            "wireplumber.settings" = {
+              "bluetooth.autoswitch-to-headset-profile" = false;
+            };
+          };
+        };
+      };
+    };
+
     time.timeZone = lib.mkDefault "America/Sao_Paulo";
 
     users.groups.wifi_controller = lib.mkDefault { };
@@ -144,8 +182,43 @@ in {
     users.users."${cfg.username}" = {
       isNormalUser = true;
       extraGroups = [ "wheel" "wifi_controller" ] ++ cfg.extraUserGroups;
-      packages = cfg.defaultUserPackages ++ cfg.extraUserPackages;
+      packages = cfg.defaultUserPackages ++ cfg.extraUserPackages
+        ++ (if cfg.isServer then
+          [ ]
+        else
+          with pkgs; [
+            alacritty
+            brightnessctl
+            (callPackage ../programs/dwlmsg.nix { })
+            (callPackage ../programs/dwl-tag-viewer.nix { })
+            dunst
+            dwl
+            eww
+            grim
+            playerctl
+            rose-pine-cursor
+            rxvt-unicode
+            slurp
+            swappy
+            wl-clipboard
+            wlr-randr
+            wofi
+            xdg-utils
+            xorg.xrdb
+          ]);
     };
 
+    xdg.portal = lib.mkIf (!cfg.isServer) {
+      enable = true;
+      config = {
+        common = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+        };
+      };
+      wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
   };
 }

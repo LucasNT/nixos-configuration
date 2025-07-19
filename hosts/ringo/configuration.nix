@@ -4,12 +4,6 @@
   imports = [
     ../../modules/baseSystem.nix
     ./hardware-configuration.nix
-    ../../programs/pipewire.nix
-    ../../modules/docker.nix
-    (import ../../programs/desktop.nix {
-      inherit config lib pkgs username;
-      dwl = dwl_local;
-    })
     (import ../../programs/backup.nix { inherit config lib pkgs; })
   ];
 
@@ -17,6 +11,7 @@
     isBtrfs = true;
     isServer = false;
     isNotebook = true;
+    enableDocker = true;
     enableSSHD = true;
     username = username;
     extraEnvironmentPackage = [ ];
@@ -74,11 +69,6 @@
   };
 
   programs = { steam.enable = true; };
-
-  LucasNT.docker = {
-    enable = true;
-    isBtrfs = true;
-  };
 
   services = {
     logind = { lidSwitch = lib.mkForce "hibernate"; };

@@ -37,6 +37,7 @@
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "ringo"; }
+          ./modules/baseSystem.nix
           ./hosts/ringo/configuration.nix
         ];
       };
