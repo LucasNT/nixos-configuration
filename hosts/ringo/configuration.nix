@@ -47,16 +47,6 @@
     ];
   };
 
-  hardware = { # migrado
-    graphics.enable = true;
-    bluetooth = {
-      enable = true;
-      powerOnBoot = false;
-    };
-  };
-
-  networking.wireless.enable = true; # migrado
-
   nixpkgs = { # precisa de mais configuração
     config = {
       allowUnfreePredicate = pkg:
