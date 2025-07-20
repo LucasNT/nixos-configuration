@@ -1,11 +1,7 @@
 { config, lib, pkgs, username, dwl_local, ... }:
 
 {
-  imports = [
-    ../../modules/baseSystem.nix
-    ./hardware-configuration.nix
-    (import ../../programs/backup.nix { inherit config lib pkgs; })
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   LucasNT.system = {
     isBtrfs = true;

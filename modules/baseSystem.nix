@@ -1,7 +1,7 @@
 { config, lib, pkgs, dwl_local, ... }:
 let cfg = config.LucasNT.system;
 in {
-  imports = [ ../hosts/base/services/openssh.nix ./docker.nix ];
+  imports = [ ../hosts/base/services/openssh.nix ./docker.nix ./backup.nix ];
   options.LucasNT.system = {
     isBtrfs = lib.mkOption {
       type = lib.types.bool;
@@ -12,6 +12,8 @@ in {
     isServer = lib.mkEnableOption "is a server machine";
 
     isNotebook = lib.mkEnableOption "is a notebook";
+
+    enableBackup = lib.mkEnableOption "Enable backup configurations";
 
     enableDocker = lib.mkEnableOption "Enable Docker service";
 
@@ -107,6 +109,8 @@ in {
       enable = true;
       isBtrfs = cfg.isBtrfs;
     };
+
+    LucasNT.backup.enable = true;
 
     networking.wireless.enable = lib.mkDefault cfg.isNotebook;
 
