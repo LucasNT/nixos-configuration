@@ -51,6 +51,7 @@
           "discord-canary"
           "steam"
           "steam-unwrapped"
+          "obsidian"
         ];
     };
   };
