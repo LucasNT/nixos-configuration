@@ -28,3 +28,6 @@ jobs:
         run: |
           ls -la
           nix flake update
+          git add flake.lock
+          git commit -m "feat(lock): update flake lock"
+          git push
