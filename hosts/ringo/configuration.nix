@@ -20,6 +20,7 @@
       logseq
       neovim
       nushell
+      obsidian
       pika-backup
       ripgrep
       sox
