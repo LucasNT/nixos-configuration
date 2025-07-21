@@ -30,4 +30,6 @@ jobs:
           nix flake update
           git add flake.lock
           git commit -m "feat(lock): update flake lock"
+          git config user.email "bot@lucasnt.dev"
+          git config user.name "ActionsBot"
           git push
