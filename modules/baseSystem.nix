@@ -126,14 +126,14 @@ in {
 
     programs.firefox.enable = lib.mkDefault (!cfg.isServer);
 
-    programs.hyprlock.enable = !cfg.isServer;
+    programs.niri.enable = !cfg.isServer;
+
+    programs.waybar.enable = !cfg.isServer;
 
     security = {
       polkit.enable = true;
       rtkit.enable = true;
     };
-
-    services.hypridle.enable = !cfg.isServer;
 
     services.libinput.enable = !cfg.isServer;
 
@@ -193,36 +193,24 @@ in {
           with pkgs; [
             alacritty
             brightnessctl
-            (callPackage ../programs/dwlmsg.nix { })
-            (callPackage ../programs/dwl-tag-viewer.nix { })
             dunst
-            dwl_local
-            eww
+            fuzzel
             grim
             playerctl
             rose-pine-cursor
             rxvt-unicode
             slurp
             swappy
+            swaybg
+            swayidle
+            swaylock
             wl-clipboard
             wlr-randr
-            wofi
             xdg-utils
             xorg.xrdb
+            xwayland-satellite
           ]);
     };
 
-    xdg.portal = lib.mkIf (!cfg.isServer) {
-      enable = true;
-      config = {
-        common = {
-          default = [ "gtk" ];
-          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-          "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-        };
-      };
-      wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
   };
 }
