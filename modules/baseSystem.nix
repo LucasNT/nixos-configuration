@@ -60,6 +60,9 @@ in {
       description = "List of extra packages to install in  the user";
     };
 
+    addAllPackgesForNvim =
+      lib.mkEnableOption "Install packages for development with neovim";
+
   };
 
   config = {
@@ -209,7 +212,8 @@ in {
             xdg-utils
             xorg.xrdb
             xwayland-satellite
-          ]);
+          ]) ++ lib.lists.optionals cfg.addAllPackgesForNvim
+        (with pkgs; [ nodejs python3 gcc gnumake unzip go cargo ]);
     };
 
   };

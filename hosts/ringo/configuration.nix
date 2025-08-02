@@ -9,6 +9,7 @@
     isNotebook = true;
     enableDocker = true;
     enableSSHD = true;
+    addAllPackgesForNvim = true;
     username = username;
     extraEnvironmentPackage = [ ];
     bootKernelParams = [ "resume_offset=4233897" ];
