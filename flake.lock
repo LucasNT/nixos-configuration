@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "dwl": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-25-05"
-        ]
-      },
-      "locked": {
-        "lastModified": 1749318210,
-        "narHash": "sha256-eBcQi7D4+SPj/V1wN3GSZ8cPAejJ1n+JOjM20jZWy/0=",
-        "owner": "LucasNT",
-        "repo": "dwl",
-        "rev": "37bdfd57f9f142a47c5bca3f125d77ac7bb05c85",
-        "type": "github"
-      },
-      "original": {
-        "owner": "LucasNT",
-        "ref": "main",
-        "repo": "dwl",
-        "type": "github"
-      }
-    },
     "my_feed_notification": {
       "inputs": {
         "nixpkgs": [
@@ -60,7 +39,6 @@
     },
     "root": {
       "inputs": {
-        "dwl": "dwl",
         "my_feed_notification": "my_feed_notification",
         "nixpkgs-25-05": "nixpkgs-25-05"
       }
