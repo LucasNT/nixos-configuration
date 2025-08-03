@@ -195,31 +195,32 @@ in {
     users.users."${cfg.username}" = {
       isNormalUser = true;
       extraGroups = [ "wheel" "wifi_controller" ] ++ cfg.extraUserGroups;
-      packages = cfg.defaultUserPackages ++ cfg.extraUserPackages
-        ++ (if cfg.isServer then
-          [ ]
-        else
-          with pkgs; [
-            alacritty
-            brightnessctl
-            dunst
-            fuzzel
-            grim
-            playerctl
-            rose-pine-cursor
-            rxvt-unicode
-            slurp
-            swappy
-            swaybg
-            swayidle
-            swaylock
-            wl-clipboard
-            wlr-randr
-            xdg-utils
-            xorg.xrdb
-            xwayland-satellite
-          ]) ++ lib.lists.optionals cfg.addAllPackgesForNvim
-        (with pkgs; [ nodejs python3 gcc gnumake unzip go cargo ]);
+      packages = lib.mkMerge [
+        cfg.defaultUserPackages
+        cfg.extraUserPackages
+        (lib.lists.optionals (!cfg.isServer) (with pkgs; [
+          alacritty
+          brightnessctl
+          dunst
+          fuzzel
+          grim
+          playerctl
+          rose-pine-cursor
+          rxvt-unicode
+          slurp
+          swappy
+          swaybg
+          swayidle
+          swaylock
+          wl-clipboard
+          wlr-randr
+          xdg-utils
+          xorg.xrdb
+          xwayland-satellite
+        ]))
+        (lib.lists.optionals cfg.addAllPackgesForNvim
+          (with pkgs; [ nodejs python3 gcc gnumake unzip go cargo ]))
+      ];
       openssh.authorizedKeys.keys = cfg.userAuthrorizedKeys;
     };
 
