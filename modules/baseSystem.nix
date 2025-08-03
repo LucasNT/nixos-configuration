@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dwl_local, ... }:
+{ config, lib, pkgs, ... }:
 let cfg = config.LucasNT.system;
 in {
   imports = [ ../hosts/base/services/openssh.nix ./docker.nix ./backup.nix ];
@@ -62,6 +62,12 @@ in {
 
     addAllPackgesForNvim =
       lib.mkEnableOption "Install packages for development with neovim";
+
+    userAuthrorizedKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "List of public keys authorized for the user";
+    };
 
   };
 
@@ -214,6 +220,7 @@ in {
             xwayland-satellite
           ]) ++ lib.lists.optionals cfg.addAllPackgesForNvim
         (with pkgs; [ nodejs python3 gcc gnumake unzip go cargo ]);
+      openssh.authorizedKeys.keys = cfg.authorizedKeys;
     };
 
   };

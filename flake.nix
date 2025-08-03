@@ -1,10 +1,6 @@
 {
   inputs = {
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
-    dwl = {
-      url = "github:LucasNT/dwl/main";
-      inputs.nixpkgs.follows = "nixpkgs-25-05";
-    };
     my_feed_notification = {
       url = "github:LucasNT/MyFeedNotification/main";
       inputs.nixpkgs.follows = "nixpkgs-25-05";
@@ -28,10 +24,7 @@
       };
       ringo = let
         username = "ringo";
-        specialArgs = {
-          inherit username;
-          dwl_local = inputs.dwl.packages.x86_64-linux.default;
-        };
+        specialArgs = { inherit username; };
       in nixpkgs-25-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
@@ -46,7 +39,6 @@
         username = "lucas";
         specialArgs = {
           inherit username;
-          dwl_local = inputs.dwl.packages.x86_64-linux.default;
           my_feed_notification =
             inputs.my_feed_notification.packages.x86_64-linux.default;
         };
@@ -68,7 +60,7 @@
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "momo"; }
-          ./hosts/base/configuration.nix
+          ./modules/baseSystem.nix
           ./hosts/momo/configuration.nix
         ];
       };
