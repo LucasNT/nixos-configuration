@@ -119,7 +119,7 @@ in {
       isBtrfs = cfg.isBtrfs;
     };
 
-    LucasNT.backup.enable = true;
+    LucasNT.backup.enable = cfg.enableBackup;
 
     networking.wireless.enable = lib.mkDefault cfg.isNotebook;
 
