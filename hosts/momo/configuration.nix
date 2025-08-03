@@ -14,6 +14,9 @@
     extraEnvironmentPackage = [ ];
     extraUserGroups = [ "wheel" "transmission" ];
     extraUserPackages = with pkgs; [ neovim nushell ripgrep wireguard-tools ];
+    userAuthrorizedKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjkvko0b7IhhwM1YzRc7HlUUCPMUboSz2LBC7N5+Zwx lucas@note"
+    ];
   };
 
   fileSystems."/files/Lucas" = {
