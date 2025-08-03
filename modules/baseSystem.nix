@@ -220,7 +220,7 @@ in {
             xwayland-satellite
           ]) ++ lib.lists.optionals cfg.addAllPackgesForNvim
         (with pkgs; [ nodejs python3 gcc gnumake unzip go cargo ]);
-      openssh.authorizedKeys.keys = cfg.authorizedKeys;
+      openssh.authorizedKeys.keys = cfg.userAuthrorizedKeys;
     };
 
   };
