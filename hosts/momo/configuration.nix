@@ -22,6 +22,7 @@
     ];
     userAuthrorizedKeys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjkvko0b7IhhwM1YzRc7HlUUCPMUboSz2LBC7N5+Zwx lucas@note"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeYxkpdwq35zwgDChLJ02H9ui9DYjXDEsXHM70IWBD7 lucas@lucasnt"
     ];
   };
 
