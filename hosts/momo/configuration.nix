@@ -38,6 +38,12 @@
     options = [ "subvol=@backup-note" ];
   };
 
+  fileSystems."/files/memos" = {
+    device = "/dev/disk/by-uuid/b0f49523-ab2d-4c9a-9364-831463616ebe";
+    fsType = "btrfs";
+    options = [ "subvol=@memos" ];
+  };
+
   networking = {
     defaultGateway = "192.168.133.1";
     nameservers = [ "1.1.1.1" ];
