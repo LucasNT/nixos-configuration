@@ -72,7 +72,7 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 2049 ];
+  networking.firewall.allowedTCPPorts = [ 2049 5230 ];
 
   virtualisation.oci-containers.containers.momo = {
     volumes = [ "/files/memos/:/var/opt/memos" ];
