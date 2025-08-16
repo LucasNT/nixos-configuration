@@ -48,6 +48,8 @@
     };
   };
 
+  system.stateVersion = lib.mkForce "25.05";
+
   networking.firewall.allowedTCPPorts = [ 2049 5230 ];
 
 }
