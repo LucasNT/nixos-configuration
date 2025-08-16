@@ -1,13 +1,14 @@
-{ config, lib, pkgs, username, dwl_local, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports =
+    [ ./hardware-configuration.nix ./file-system-mounts.nix ./containers.nix ];
 
   LucasNT.system = {
     isBtrfs = true;
     isServer = true;
     isNotebook = false;
-    enableDocker = true;
+    enableDocker = false;
     enableSSHD = true;
     addAllPackgesForNvim = false;
     username = username;
@@ -26,30 +27,6 @@
     ];
   };
 
-  fileSystems."/files/Lucas" = {
-    device = "/dev/disk/by-uuid/b0f49523-ab2d-4c9a-9364-831463616ebe";
-    fsType = "btrfs";
-    options = [ "subvol=@Lucas" ];
-  };
-
-  fileSystems."/files/backup-note" = {
-    device = "/dev/disk/by-uuid/b0f49523-ab2d-4c9a-9364-831463616ebe";
-    fsType = "btrfs";
-    options = [ "subvol=@backup-note" ];
-  };
-
-  fileSystems."/files/memos" = {
-    device = "/dev/disk/by-uuid/b0f49523-ab2d-4c9a-9364-831463616ebe";
-    fsType = "btrfs";
-    options = [ "subvol=@memos" ];
-  };
-
-  fileSystems."/files/visio-backup" = {
-    device = "/dev/disk/by-uuid/b0f49523-ab2d-4c9a-9364-831463616ebe";
-    fsType = "btrfs";
-    options = [ "subvol=@visio-note-backup2" ];
-  };
-
   networking = {
     defaultGateway = "192.168.133.1";
     nameservers = [ "1.1.1.1" ];
@@ -60,13 +37,6 @@
   };
 
   services = {
-    nfs.server = {
-      enable = true;
-      exports = ''
-        /files/Lucas 192.168.133.9(rw,nohide,subtree_check) 192.168.133.8(rw,nohide,subtree_check) 192.168.133.4(rw,nohide,subtree_check)
-      '';
-    };
-
     transmission = {
       enable = true;
       package = pkgs.transmission_4;
@@ -80,9 +50,4 @@
 
   networking.firewall.allowedTCPPorts = [ 2049 5230 ];
 
-  virtualisation.oci-containers.containers.momo = {
-    volumes = [ "/files/memos/:/var/opt/memos" ];
-    ports = [ "5230:5230" ];
-    image = "neosmemo/memos:stable";
-  };
 }
