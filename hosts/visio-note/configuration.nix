@@ -7,6 +7,7 @@
     isBtrfs = true;
     isServer = false;
     isNotebook = true;
+    enableBackup = true;
     enableDocker = true;
     enableSSHD = true;
     username = username;
