@@ -10,7 +10,7 @@
   virtualisation.oci-containers.containers.transmission = {
     volumes = [
       "/files/media/transmission/data:/config"
-      "/files/media/transmission/Dowloads:/downloads"
+      "/files/media/transmission/Downloads:/downloads"
     ];
     image = "lscr.io/linuxserver/transmission:latest";
     environment = {
