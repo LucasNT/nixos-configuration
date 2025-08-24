@@ -89,8 +89,8 @@
         "rpc-socket-mode": "0750",
         "rpc-url": "/transmission/",
         "rpc-username": "",
-        "rpc-whitelist": "127.0.0.1",
-        "rpc-whitelist-enabled": false,
+        "rpc-whitelist": "127.0.0.1,192.168.133.*",
+        "rpc-whitelist-enabled": true,
         "scrape-paused-torrents-enabled": true,
         "script-torrent-added-enabled": false,
         "script-torrent-added-filename": "",
@@ -140,6 +140,6 @@
 
   system.stateVersion = lib.mkForce "25.05";
 
-  networking.firewall.allowedTCPPorts = [ 2049 5230 ];
+  networking.firewall.allowedTCPPorts = [ 2049 ];
 
 }

@@ -14,8 +14,8 @@
     ];
     image = "lscr.io/linuxserver/transmission:latest";
     environment = {
-      PUID = 2005;
-      GUID = 2005;
+      PUID = "2005";
+      GUID = "2005";
       TZ = "America/Sao_Paulo";
     };
     ports = [ "9091:9091" "51413:51413" "51413:51413/udp" ];
