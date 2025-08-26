@@ -224,12 +224,5 @@ in {
       openssh.authorizedKeys.keys = cfg.userAuthrorizedKeys;
     };
 
-    xdg.portal = lib.mkIf (!cfg.isServer) {
-      enable = true;
-      config = { common = { default = [ "gtk" ]; }; };
-      wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
-
   };
 }
