@@ -1,8 +1,12 @@
 { config, lib, pkgs, username, ... }:
 
 {
-  imports =
-    [ ./hardware-configuration.nix ./file-system-mounts.nix ./containers.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./file-system-mounts.nix
+    ./containers.nix
+    ./alloy.nix
+  ];
 
   LucasNT.system = {
     isBtrfs = true;
