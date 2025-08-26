@@ -224,5 +224,22 @@ in {
       openssh.authorizedKeys.keys = cfg.userAuthrorizedKeys;
     };
 
+    xdg.portal = lib.mkIf (!cfg.isServer) {
+      enable = true;
+      config = {
+        niri = {
+          default = [ "gnome" "gtk" ];
+          "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+          "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+          "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+          "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+        };
+      };
+      extraPortals =
+        [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
+    };
+
   };
 }
