@@ -3,7 +3,7 @@
 {
   services.alloy = {
     enable = true;
-    configPath = "/home/lucas/config.alloy";
+    configPath = "/home/config.alloy";
   };
 
   environment.etc."alloy/config.alloy" = {
