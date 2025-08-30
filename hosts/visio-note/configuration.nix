@@ -4,6 +4,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   LucasNT.system = {
+    addAllPackgesForNvim = true;
     isBtrfs = true;
     isServer = false;
     isNotebook = true;
