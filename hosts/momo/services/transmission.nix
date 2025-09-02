@@ -1,11 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
-  virtualisation.oci-containers.containers.memo = {
-    volumes = [ "/files/memos/:/var/opt/memos" ];
-    ports = [ "5230:5230" ];
-    image = "neosmemo/memos:stable";
-  };
+{ config, lib, pkgs, ... }: {
 
   virtualisation.oci-containers.containers.transmission = {
     volumes = [
@@ -111,6 +104,7 @@
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [ 9091 51413 5230 ];
+  networking.firewall.allowedTCPPorts = [ 9091 51413 ];
   networking.firewall.allowedUDPPorts = [ 51413 ];
+
 }
