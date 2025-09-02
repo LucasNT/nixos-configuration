@@ -1,1 +1,3 @@
-{ }: { imports = [ ./alloy.nix ./memos.nix ./transmission.nix ]; }
+{ config, lib, pkgs, ... }: {
+  imports = [ ./alloy.nix ./memos.nix ./transmission.nix ];
+}
