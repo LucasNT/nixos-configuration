@@ -1,6 +1,10 @@
 { config, lib, pkgs, username, dwl_local, my_feed_notification, ... }:
 
-{
+let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents
+    (with pkgs.google-cloud-sdk.components; [ gke-gcloud-auth-plugin ]);
+
+in {
   imports = [ ./hardware-configuration.nix ];
 
   LucasNT.system = {
@@ -18,9 +22,10 @@
     extraUserPackages = with pkgs; [
       borgbackup
       chromium
-      discord-canary
+      discord
       gh
-      google-cloud-sdk
+      gdk
+      kubectl
       logseq
       my_feed_notification
       neovim
@@ -62,7 +67,6 @@
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "discord-canary"
           "electron-27.3.11"
           "discord"
           "obsidian"
@@ -86,5 +90,7 @@
     '';
     serviceConfig = { Type = "oneshot"; };
   };
+
+  system.stateVersion = "24.11";
 
 }
