@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       Address = "0.0.0.0";
-      MusicFolder = "/files/Lucas/NAS/Músicas";
+      MusicFolder = "/files/Lucas/Músicas";
       DataFolder = "/files/media/navidrome-data";
       LogLevel = "debug";
       EnableInsightsCollector = false;
