@@ -38,6 +38,8 @@ in {
     ];
   };
 
+  services.netbird.enable = true;
+
   boot = {
     resumeDevice = "/dev/disk/by-uuid/7ef084d0-c6b8-4264-a677-37f0d2e6a913";
   };
