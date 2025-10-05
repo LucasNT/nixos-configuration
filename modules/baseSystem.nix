@@ -1,7 +1,12 @@
 { config, lib, pkgs, ... }:
 let cfg = config.LucasNT.system;
 in {
-  imports = [ ../hosts/base/services/openssh.nix ./docker.nix ./backup.nix ];
+  imports = [
+    ../hosts/base/services/openssh.nix
+    ./docker.nix
+    ./backup.nix
+    ./updateSystem.nix
+  ];
   options.LucasNT.system = {
     isBtrfs = lib.mkOption {
       type = lib.types.bool;
@@ -120,6 +125,8 @@ in {
     };
 
     LucasNT.backup.enable = cfg.enableBackup;
+
+    LucasNT.update.enable = true;
 
     networking.wireless.enable = lib.mkDefault cfg.isNotebook;
 
