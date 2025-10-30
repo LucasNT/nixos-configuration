@@ -24,6 +24,8 @@ in {
 
     enableSSHD = lib.mkEnableOption "Enable SSHD service";
 
+    enableQmk = lib.mkEnableOption "Enable QMK";
+
     username = lib.mkOption {
       type = lib.types.str;
       description = "Username of the user of the machine";
@@ -127,6 +129,8 @@ in {
     LucasNT.backup.enable = cfg.enableBackup;
 
     LucasNT.update.enable = true;
+
+    LucasNT.qmk.enable = true;
 
     networking.wireless.enable = lib.mkDefault cfg.isNotebook;
 
