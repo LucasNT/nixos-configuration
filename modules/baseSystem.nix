@@ -130,7 +130,7 @@ in {
 
     LucasNT.update.enable = true;
 
-    LucasNT.qmk.enable = true;
+    LucasNT.qmk.enable = cfg.enableQmk;
 
     networking.wireless.enable = lib.mkDefault cfg.isNotebook;
 

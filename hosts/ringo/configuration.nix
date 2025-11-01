@@ -9,6 +9,7 @@
     isNotebook = true;
     enableDocker = true;
     enableSSHD = true;
+    enableQmk = true;
     addAllPackgesForNvim = true;
     username = username;
     extraEnvironmentPackage = [ ];

@@ -15,6 +15,7 @@ in {
     enableBackup = true;
     enableDocker = true;
     enableSSHD = true;
+    enableQmk = true;
     username = username;
     extraEnvironmentPackage = [ ];
     bootKernelParams = [ "resume_offset=1158954" ];
