@@ -6,6 +6,7 @@ in {
     ./docker.nix
     ./backup.nix
     ./updateSystem.nix
+    ./qmk.nix
   ];
   options.LucasNT.system = {
     isBtrfs = lib.mkOption {
