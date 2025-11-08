@@ -3,7 +3,7 @@
 {
   virtualisation.oci-containers.containers.copyparty = {
     volumes = [ "/files/Lucas:/w" ];
-    ports = [ "3923;3923" ];
+    ports = [ "3923:3923" ];
     image = "copyparty/ac:latest";
   };
 
