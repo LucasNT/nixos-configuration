@@ -27,6 +27,12 @@
     ];
   };
 
+  LucasNT.update = {
+    enable = true;
+    OnCalendar = "Mon,Wed,Fri,Sun *-*-* 23:00:00";
+    resetPcOnSuccessUpdate = true;
+  };
+
   users.groups.media = {
     gid = 2005;
     members = [ "lucas" ];

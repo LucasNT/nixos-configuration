@@ -48,6 +48,7 @@
         modules = [
           { networking.hostName = "visio-lucasNT"; }
           ./modules/baseSystem.nix
+          ./modules/updateSystem.nix
           ./hosts/visio-note/configuration.nix
         ];
       };
@@ -61,6 +62,7 @@
         modules = [
           { networking.hostName = "momo"; }
           ./modules/baseSystem.nix
+          ./modules/updateSystem.nix
           ./hosts/momo/configuration.nix
         ];
       };

@@ -39,6 +39,8 @@ in {
     ];
   };
 
+  LucasNT.update.enable = true;
+
   services.netbird.enable = true;
 
   boot = {
