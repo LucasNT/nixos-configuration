@@ -14,6 +14,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     systemd.timers."update-system" = {
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = cfg.OnCalendar;
         Persistent = true;
