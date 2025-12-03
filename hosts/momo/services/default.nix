@@ -5,5 +5,6 @@
     ./transmission.nix
     ./navidrome.nix
     ./copyparty.nix
+    ./traefik.nix
   ];
 }
