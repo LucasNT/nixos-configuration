@@ -12,12 +12,14 @@
         };
       };
       log = {
-        filePath = "/var/log/traefik.log";
+        filePath = "${config.services.traefik.dataDir}/traefik.log";
         level = "INFO";
         maxBackups = 2;
         compress = true;
       };
-      accessLog = { filePath = "/var/log/traefik_access.log"; };
+      accessLog = {
+        filePath = "${config.services.traefik.dataDir}/traefik_access.log";
+      };
     };
     dynamicConfigOptions = {
       http.routers = {
@@ -61,8 +63,9 @@
   };
 
   services.logrotate.enable = true;
-  services.logrotate.settings."/var/log/traefik_access.log" = {
-    frequency = "daily";
-    rotate = 3;
-  };
+  services.logrotate.settings."${config.services.traefik.dataDir}/traefik_access.log" =
+    {
+      frequency = "daily";
+      rotate = 3;
+    };
 }
