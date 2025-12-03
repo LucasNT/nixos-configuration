@@ -28,7 +28,7 @@
           service = "navidrome";
           entryPoints = [ "web" ];
         };
-        allot = {
+        alloy = {
           rule = "Host(`alloy.lucasnt.dev`)";
           service = "alloy";
           entryPoints = [ "web" ];
