@@ -20,6 +20,7 @@
       accessLog = {
         filePath = "${config.services.traefik.dataDir}/traefik_access.log";
       };
+      api = { };
     };
     dynamicConfigOptions = {
       http.routers = {
@@ -41,6 +42,11 @@
         alloy = {
           rule = "Host(`alloy.lucasnt.dev`)";
           service = "alloy";
+          entryPoints = [ "web" ];
+        };
+        api = {
+          rule = "Host(`192.168.189.10`)";
+          service = "api@internal";
           entryPoints = [ "web" ];
         };
       };
