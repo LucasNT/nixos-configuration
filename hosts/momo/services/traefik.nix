@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [ 80 ];
   services.traefik = {
     enable = true;
     staticConfigOptions = {
