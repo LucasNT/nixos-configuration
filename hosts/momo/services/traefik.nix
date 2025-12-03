@@ -10,6 +10,7 @@
           address = ":80";
           asDefault = true;
         };
+        websecure = { address = ":443"; };
       };
       log = {
         filePath = "${config.services.traefik.dataDir}/traefik.log";
@@ -27,22 +28,22 @@
         memos = {
           rule = "Host(`notas.lucasnt.dev`)";
           service = "memos";
-          entryPoints = [ "web" ];
+          entryPoints = [ "websecure" ];
         };
         transmission = {
           rule = "Host(`transmission.lucasnt.dev`)";
           service = "transmission";
-          entryPoints = [ "web" ];
+          entryPoints = [ "websecure" ];
         };
         navidrome = {
           rule = "Host(`navidrome.lucasnt.dev`)";
           service = "navidrome";
-          entryPoints = [ "web" ];
+          entryPoints = [ "websecure" ];
         };
         alloy = {
           rule = "Host(`alloy.lucasnt.dev`)";
           service = "alloy";
-          entryPoints = [ "web" ];
+          entryPoints = [ "websecure" ];
         };
         api = {
           rule = "Host(`192.168.189.10`)";
