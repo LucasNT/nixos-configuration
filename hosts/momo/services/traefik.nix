@@ -11,6 +11,13 @@
           asDefault = true;
         };
       };
+      log = {
+        filePath = "/var/log/traefik.log";
+        level = "INFO";
+        maxBackups = 2;
+        compress = true;
+      };
+      accessLog = { filePath = "/var/log/traefik_access.log"; };
     };
     dynamicConfigOptions = {
       http.routers = {
@@ -51,13 +58,6 @@
         };
       };
     };
-    log = {
-      filePath = "/var/log/traefik.log";
-      level = "INFO";
-      maxBackups = 2;
-      compress = true;
-    };
-    accessLog = { filePath = "/var/log/traefik_access.log"; };
   };
 
   services.logrotate.enable = true;
