@@ -26,24 +26,24 @@
     dynamicConfigOptions = {
       http.routers = {
         memos = {
-          rule = "Host(`notas.lucasnt.dev`)";
+          rule = "Host(`notas.local`)";
           service = "memos";
-          entryPoints = [ "websecure" ];
+          entryPoints = [ "web" ];
         };
         transmission = {
-          rule = "Host(`transmission.lucasnt.dev`)";
+          rule = "Host(`transmission.local`)";
           service = "transmission";
-          entryPoints = [ "websecure" ];
+          entryPoints = [ "web" ];
         };
         navidrome = {
-          rule = "Host(`navidrome.lucasnt.dev`)";
+          rule = "Host(`navidrome.local`)";
           service = "navidrome";
-          entryPoints = [ "websecure" ];
+          entryPoints = [ "web" ];
         };
         alloy = {
-          rule = "Host(`alloy.lucasnt.dev`)";
+          rule = "Host(`alloy.local`)";
           service = "alloy";
-          entryPoints = [ "websecure" ];
+          entryPoints = [ "web" ];
         };
         api = {
           rule = "Host(`192.168.189.10`)";
