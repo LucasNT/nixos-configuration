@@ -53,16 +53,16 @@
       http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
       http.services = {
         transmission = {
-          loadBalancer = { servers.uri = [ "http://localhost:9091" ]; };
+          loadBalancer = { servers.url = [ "http://localhost:9091" ]; };
         };
         navidrome = {
-          loadBalancer = { servers.uri = [ "http://localhost:4533" ]; };
+          loadBalancer = { servers.url = [ "http://localhost:4533" ]; };
         };
         memos = {
-          loadBalancer = { servers.uri = [ "http://localhost:5230" ]; };
+          loadBalancer = { servers.url = [ "http://localhost:5230" ]; };
         };
         alloy = {
-          loadBalancer = { servers.uri = [ "http://localhost:123456" ]; };
+          loadBalancer = { servers.url = [ "http://localhost:123456" ]; };
         };
       };
     };
