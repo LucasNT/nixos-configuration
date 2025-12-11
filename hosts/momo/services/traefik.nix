@@ -50,6 +50,11 @@
           service = "api@internal";
           entryPoints = [ "web" ];
         };
+        jogos = {
+          rule = "Host(`games.local`)";
+          service = "jogos";
+          entryPoints = [ "web" ];
+        };
       };
       http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
       http.services = {
@@ -64,6 +69,9 @@
         };
         alloy = {
           loadBalancer = { servers = [{ url = "http://localhost:123456"; }]; };
+        };
+        jogos = {
+          loadBalancer = { servers = [{ url = "http://localhost:8787"; }]; };
         };
       };
     };
