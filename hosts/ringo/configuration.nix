@@ -35,7 +35,7 @@
   };
 
   fileSystems."/home/ringo/NAS" = {
-    device = "192.168.133.10:/files/Lucas";
+    device = "192.168.189.10:/files/Lucas";
     fsType = "nfs";
     options = [
       "vers=4"
