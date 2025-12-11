@@ -6,6 +6,6 @@
     ./navidrome.nix
     ./copyparty.nix
     ./traefik.nix
-    ./statis-web-server.nix
+    ./static-web-server.nix
   ];
 }
