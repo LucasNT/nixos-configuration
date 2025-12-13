@@ -35,7 +35,7 @@
     enable = true;
     exports = ''
       /files/Lucas 192.168.189.9(rw,nohide,subtree_check) 192.168.189.8(rw,nohide,subtree_check) 192.168.189.4(rw,nohide,subtree_check) 192.168.135.3(rw,nohide,subtree_check)
-      /files/media 192.168.189.9(rw,nohide,subtree_check) 192.168.189.8(rw,nohide,subtree_check) 192.168.189.4(rw,nohide,subtree_check) 192.168.135.3(rw,nohide,subtree_check)
+      /files/media 192.168.189.9(rw,nohide,subtree_check) 192.168.189.8(rw,nohide,subtree_check) 192.168.189.4(rw,nohide,subtree_check) 192.168.135.3(rw,nohide,subtree_check) 192.168.189.82(r,nohide,subtree_check)
     '';
   };
 }
