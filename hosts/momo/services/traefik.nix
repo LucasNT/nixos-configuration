@@ -55,6 +55,11 @@
           service = "jogos";
           entryPoints = [ "web" ];
         };
+        jellyfin = {
+          rule = "Host(`streamer.local`)";
+          service = "jellyfin";
+          entryPoints = [ "web" ];
+        };
       };
       http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
       http.services = {
@@ -72,6 +77,11 @@
         };
         jogos = {
           loadBalancer = { servers = [{ url = "http://localhost:8787"; }]; };
+        };
+        jellyfin = {
+          loadBalancer = {
+            servers = [{ url = "http://192.168.189.82:8096"; }];
+          };
         };
       };
     };
