@@ -1,13 +1,14 @@
 {
   inputs = {
     nixpkgs-25-05.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixos-25.11";
     my_feed_notification = {
       url = "github:LucasNT/MyFeedNotification/main";
       inputs.nixpkgs.follows = "nixpkgs-25-05";
     };
   };
 
-  outputs = { self, nixpkgs-25-05, ... }@inputs: {
+  outputs = { self, nixpkgs-25-05, nixpkgs-25-11, ... }@inputs: {
 
     nixosConfigurations = {
       vm-nixos = let
@@ -25,7 +26,7 @@
       ringo = let
         username = "ringo";
         specialArgs = { inherit username; };
-      in nixpkgs-25-05.lib.nixosSystem {
+      in nixpkgs-25-11.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
