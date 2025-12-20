@@ -43,7 +43,7 @@
           my_feed_notification =
             inputs.my_feed_notification.packages.x86_64-linux.default;
         };
-      in nixpkgs-25-05.lib.nixosSystem {
+      in nixpkgs-25-11.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
@@ -57,7 +57,7 @@
       momo = let
         username = "lucas";
         specialArgs = { inherit username; };
-      in nixpkgs-25-05.lib.nixosSystem {
+      in nixpkgs-25-11.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
