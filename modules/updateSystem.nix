@@ -5,7 +5,7 @@ in {
   options.LucasNT.update = {
     enable = lib.mkEnableOption "enable cron to update system";
     OnCalendar = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = "Mon,Wed,Fri,Sun *-*-* 10:00:00";
       description = "Set time to update system";
     };
