@@ -61,7 +61,7 @@
   programs = { steam.enable = true; };
 
   services = {
-    logind = { lidSwitch = lib.mkForce "hibernate"; };
+    logind = { settings.HandleLidSwitch = lib.mkForce "hibernate"; };
     upower = { criticalPowerAction = lib.mkForce "Hibernate"; };
     rpcbind.enable = true; # não sei se é necessário
   };

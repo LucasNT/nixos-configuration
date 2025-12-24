@@ -152,8 +152,8 @@ in {
     services.libinput.enable = !cfg.isServer;
 
     services.logind = lib.mkIf (cfg.isNotebook) {
-      lidSwitch = lib.mkDefault "suspend";
-      lidSwitchDocked = lib.mkDefault "suspend";
+      settings.Login.HandleLidSwitch = lib.mkDefault "suspend";
+      settings.Login.HandleLidSwitchDocked = lib.mkDefault "suspend";
     };
 
     services.upower = lib.mkIf (cfg.isNotebook) {
