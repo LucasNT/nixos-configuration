@@ -60,6 +60,11 @@
           service = "jellyfin";
           entryPoints = [ "web" ];
         };
+        proxmox = {
+          rule = "Host(`proxmox.local`)";
+          service = "proxmox";
+          entryPoints = [ "web" ];
+        };
       };
       http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
       http.services = {
@@ -81,6 +86,11 @@
         jellyfin = {
           loadBalancer = {
             servers = [{ url = "http://192.168.189.82:8096"; }];
+          };
+        };
+        proxmox = {
+          loadBalancer = {
+            servers = [{ url = "http://192.168.189.5:8006"; }];
           };
         };
       };
