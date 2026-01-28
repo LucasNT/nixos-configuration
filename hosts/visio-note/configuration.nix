@@ -26,6 +26,7 @@ in {
       discord
       gh
       gdk
+      helix
       kubectl
       logseq
       my_feed_notification
