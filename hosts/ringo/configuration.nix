@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, dwl_local, ... }:
+{ config, lib, pkgs, username, swaylock-wrapper, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -26,6 +26,7 @@
       pika-backup
       ripgrep
       sox
+      swaylock-wrapper
       wireguard-tools
     ];
   };
