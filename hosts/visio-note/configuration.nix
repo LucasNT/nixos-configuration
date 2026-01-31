@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, dwl_local, my_feed_notification, ... }:
+{ config, lib, pkgs, username, my_feed_notification, ... }:
 
 let
   gdk = pkgs.google-cloud-sdk.withExtraComponents
@@ -36,6 +36,7 @@ in {
       pika-backup
       ripgrep
       sox
+      swaylock-wrapper
       wireguard-tools
     ];
   };
