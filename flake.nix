@@ -50,6 +50,8 @@
           inherit username;
           my_feed_notification =
             inputs.my_feed_notification.packages.x86_64-linux.default;
+          swaylock-wrapper =
+            inputs.swaylock-wrapper.packages.x86_64-linux.default;
         };
       in nixpkgs-25-11.lib.nixosSystem {
         inherit specialArgs;
