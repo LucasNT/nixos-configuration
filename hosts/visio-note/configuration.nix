@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, my_feed_notification, ... }:
+{ config, lib, pkgs, username, my_feed_notification, swaylock-wrapper, ... }:
 
 let
   gdk = pkgs.google-cloud-sdk.withExtraComponents
