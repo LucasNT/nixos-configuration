@@ -23,11 +23,11 @@
     },
     "nixpkgs-25-11": {
       "locked": {
-        "lastModified": 1769598131,
-        "narHash": "sha256-e7VO/kGLgRMbWtpBqdWl0uFg8Y2XWFMdz0uUJvlML8o=",
+        "lastModified": 1769900590,
+        "narHash": "sha256-I7Lmgj3owOTBGuauy9FL6qdpeK2umDoe07lM4V+PnyA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fa83fd837f3098e3e678e6cf017b2b36102c7211",
+        "rev": "41e216c0ca66c83b12ab7a98cc326b5db01db646",
         "type": "github"
       },
       "original": {
@@ -51,11 +51,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769864137,
-        "narHash": "sha256-xUQiXqdtPvTATaN0sGsOZv0DGR/ogbZSEWcx9RhfTS8=",
+        "lastModified": 1769994905,
+        "narHash": "sha256-DnDVxW3MUwu7/p17445yWrF85kVbXRnkuS1N0MOBKbU=",
         "owner": "LucasNT",
         "repo": "swaylock-wrapper",
-        "rev": "b0e7e23a255caff91afa76acdcb58b54da7eb968",
+        "rev": "cb62b7baa44704161648e3bce6216919e9cb7652",
         "type": "github"
       },
       "original": {
