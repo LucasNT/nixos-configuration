@@ -41,7 +41,7 @@ in {
     ];
   };
 
-  LucasNT.update.enable = false;
+  LucasNT.update.enable = true;
 
   services.netbird.enable = true;
 
