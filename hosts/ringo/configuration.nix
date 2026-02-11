@@ -19,6 +19,7 @@
       borgbackup
       discord-canary
       gh
+      helix
       logseq
       neovim
       nushell
@@ -62,8 +63,8 @@
   programs = { steam.enable = true; };
 
   services = {
-    logind = { settings.Login.HandleLidSwitch = lib.mkForce "hibernate"; };
-    upower = { criticalPowerAction = lib.mkForce "Hibernate"; };
+    logind = { settings.Login.HandleLidSwitch = lib.mkForce "HybridSleep"; };
+    upower = { criticalPowerAction = lib.mkForce "HybridSleep"; };
     rpcbind.enable = true; # não sei se é necessário
   };
 
