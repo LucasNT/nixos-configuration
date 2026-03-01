@@ -16,6 +16,7 @@
     bootKernelParams = [ "resume_offset=4233897" ];
     extraFonts = [ ];
     extraUserPackages = with pkgs; [
+      bitwarden-cli
       borgbackup
       discord-canary
       gh
