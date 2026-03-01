@@ -20,6 +20,7 @@ in {
     extraEnvironmentPackage = [ ];
     extraFonts = [ ];
     extraUserPackages = with pkgs; [
+      bitwarden-cli
       borgbackup
       chromium
       discord
