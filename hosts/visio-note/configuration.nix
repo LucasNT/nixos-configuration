@@ -27,6 +27,7 @@ in {
       gh
       gdk
       helix
+      jira-cli-go
       kubectl
       logseq
       my_feed_notification
