@@ -29,6 +29,7 @@ in {
       helix
       jira-cli-go
       kubectl
+      jujutsu
       logseq
       my_feed_notification
       neovim
