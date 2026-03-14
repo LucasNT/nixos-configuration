@@ -59,7 +59,7 @@
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "discord-canary"
+          "discord"
           "steam"
           "steam-unwrapped"
           "obsidian"
