@@ -85,7 +85,7 @@
         };
         jellyfin = {
           loadBalancer = {
-            servers = [{ url = "http://192.168.189.82:8096"; }];
+            servers = [{ url = "http://localhost:8096"; }];
           };
         };
         proxmox = {
