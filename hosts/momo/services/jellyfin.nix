@@ -1,4 +1,4 @@
-{pkgs} :
+{pkgs, ...} :
 {
   services.jellygin = {
     enable = true;
