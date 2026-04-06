@@ -2,7 +2,7 @@
 {
   services.jellyfin = {
     enable = true;
-    openfirewall = true;
+    openFirewall = true;
     group = "media";
     user = "jellyfin";
     logDir = "/files/media/config/log";
