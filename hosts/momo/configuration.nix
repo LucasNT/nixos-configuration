@@ -38,6 +38,11 @@
     members = [ "lucas" ];
   };
 
+  users.users.jellyfin = {
+    isSystemUser = true;
+    uid = 2005;
+  };
+
   system.stateVersion = lib.mkForce "25.05";
 
   networking.firewall.allowedTCPPorts = [ 2049 ];

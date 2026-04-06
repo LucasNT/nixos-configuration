@@ -7,5 +7,6 @@
     ./copyparty.nix
     ./traefik.nix
     ./static-web-server.nix
+    ./jellyfin.nix
   ];
 }
