@@ -1,6 +1,6 @@
 {pkgs, ...} :
 {
-  services.jellygin = {
+  services.jellyfin = {
     enable = true;
     openfirewall = true;
     group = "media";
