@@ -70,7 +70,7 @@
   programs = { steam.enable = true; };
 
   services = {
-    logind = { settings.Login.HandleLidSwitch = lib.mkForce "ignore"; };
+    logind = { settings.Login.HandleLidSwitch = lib.mkForce "hybrid-sleep"; };
     upower = { criticalPowerAction = lib.mkForce "Hibernate"; };
     rpcbind.enable = true; # não sei se é necessário
   };

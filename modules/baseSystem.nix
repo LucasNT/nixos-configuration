@@ -153,7 +153,7 @@ in {
 
     services.logind = lib.mkIf (cfg.isNotebook) {
       settings.Login.HandleLidSwitch = lib.mkDefault "suspend";
-      settings.Login.HandleLidSwitchDocked = lib.mkDefault "suspend";
+      settings.Login.HandleLidSwitchDocked = lib.mkDefault "ignore";
     };
 
     services.upower = lib.mkIf (cfg.isNotebook) {
