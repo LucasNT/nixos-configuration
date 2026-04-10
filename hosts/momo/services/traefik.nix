@@ -78,7 +78,7 @@
           loadBalancer = { servers = [{ url = "http://localhost:5230"; }]; };
         };
         alloy = {
-          loadBalancer = { servers = [{ url = "http://localhost:123456"; }]; };
+          loadBalancer = { servers = [{ url = "http://localhost:12346"; }]; };
         };
         jogos = {
           loadBalancer = { servers = [{ url = "http://localhost:8787"; }]; };
