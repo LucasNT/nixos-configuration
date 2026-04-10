@@ -6,7 +6,7 @@
     enable = true;
     configPath = "/home/config.alloy";
     extraFlags =
-      [ "--server.http.listen-addr=127.0.0.1:12346" "--disable-reporting" ];
+      [ "--server.http.listen-addr=127.0.0.1:12346" "--disable-reporting" "--stability.level=experimental" ];
   };
 
   environment.etc."alloy/config.alloy" = {
