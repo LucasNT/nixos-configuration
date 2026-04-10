@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [ 1514 ];
   services.alloy = {
     enable = true;
     configPath = "/home/config.alloy";
