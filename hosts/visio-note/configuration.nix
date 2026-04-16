@@ -24,7 +24,7 @@ in {
       borgbackup
       chromium
       devenv
-      discord
+      discord-canary
       gh
       gdk
       helix
@@ -80,6 +80,7 @@ in {
         builtins.elem (lib.getName pkg) [
           "electron-27.3.11"
           "discord"
+          "discord-canary"
           "obsidian"
         ];
     };

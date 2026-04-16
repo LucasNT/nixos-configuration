@@ -141,6 +141,7 @@ in {
     programs.firefox.enable = lib.mkDefault (!cfg.isServer);
 
     programs.niri.enable = !cfg.isServer;
+    programs.niri.useNautilus = lib.mkIf (!cfg.isServer) false;
 
     programs.waybar.enable = !cfg.isServer;
 
