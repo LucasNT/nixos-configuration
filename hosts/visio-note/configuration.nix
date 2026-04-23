@@ -20,17 +20,19 @@ in {
     extraEnvironmentPackage = [ ];
     extraFonts = [ ];
     extraUserPackages = with pkgs; [
+      anytype
       bitwarden-cli
       borgbackup
       chromium
       devenv
       discord-canary
-      gh
       gdk
+      gh
+      gimp
       helix
       jira-cli-go
-      kubectl
       jujutsu
+      kubectl
       logseq
       my_feed_notification
       neovim
@@ -40,6 +42,7 @@ in {
       ripgrep
       sox
       swaylock-wrapper
+      vesktop
       wireguard-tools
     ];
   };
