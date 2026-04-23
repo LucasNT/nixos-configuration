@@ -85,6 +85,7 @@ in {
           "discord"
           "discord-canary"
           "obsidian"
+          "vesktop"
         ];
     };
   };
