@@ -85,7 +85,8 @@ in {
           "discord"
           "discord-canary"
           "obsidian"
-          "vesktop"
+          "anytype"
+          "anytype-heart"
         ];
     };
   };
