@@ -206,6 +206,7 @@ in {
         cfg.extraUserPackages
         (lib.lists.optionals (!cfg.isServer) (with pkgs; [
           alacritty
+          bash-language-server
           brightnessctl
           dunst
           fuzzel

@@ -11,9 +11,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.extraModprobeConfig = ''
-    options iwlwifi power_save=0
-  '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/b10ff4b1-8cb9-4250-8b8b-753b4a98487b";
