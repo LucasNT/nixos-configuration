@@ -21,6 +21,7 @@ in {
     extraFonts = [ ];
     extraUserPackages = with pkgs; [
       anytype
+      bash-language-server
       bitwarden-cli
       borgbackup
       chromium
