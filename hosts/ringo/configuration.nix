@@ -64,6 +64,8 @@
           "steam"
           "steam-unwrapped"
           "obsidian"
+          "anytype"
+          "anytype-heart"
         ];
     };
   };
