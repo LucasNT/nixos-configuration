@@ -12,7 +12,6 @@
       replication_factor = 1;
       rpc_bind_addr = "127.0.0.1:3901";
       rpc_public_addr = "127.0.0.1:3901";
-      rpc_secret = "$RPC_SECRET";
       s3_api = {
         s3_region = "momo";
         api_bind_addr = "0.0.0.0:3900";
@@ -20,8 +19,6 @@
       };
       admin = {
         api_bind_addr = "127.0.0.1:3903";
-        admin_token = "$ADMIN_TOKEN";
-        metrics_token = "$METRICS_TOKEN";
       };
     };
   };
