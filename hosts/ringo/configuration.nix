@@ -19,6 +19,7 @@
       anytype
       bitwarden-cli
       borgbackup
+      calibre
       devenv
       discord
       gh
@@ -80,4 +81,6 @@
 
   system.stateVersion = "24.11";
 
+  networking.firewall.allowedTCPPorts = [ 9090 ]; # calibre port
+ 
 }
