@@ -7,7 +7,7 @@
     bind_ip = "0.0.0.0";
     dbpath = "/files/application/mongodb";
     enableAuth = true;
-    initialScript = /home/mongoInitialScript;
+    initialScript = "/home/mongoInitialScript";
     initialRootPasswordFile = "/home/mongoPassword";
     package = pkgs.mongodb-ce;
   };
