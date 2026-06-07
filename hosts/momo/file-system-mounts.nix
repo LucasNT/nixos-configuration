@@ -43,6 +43,12 @@
     options = [ "subvol=@applications/@Garage"];
   };
 
+  fileSystems."/files/application/mongodb" = {
+    device = "/dev/disk/by-uuid/b0f49523-ab2d-4c9a-9364-831463616ebe";
+    fsType = "btrfs";
+    options = [ "subvol=@applications/@Mongodb"];
+  };
+
   services.nfs.server = {
     enable = true;
     exports = ''

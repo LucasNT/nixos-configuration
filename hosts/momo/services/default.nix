@@ -9,5 +9,6 @@
     ./static-web-server.nix
     ./jellyfin.nix
     ./garage.nix
+    ./mongodb.nix
   ];
 }
