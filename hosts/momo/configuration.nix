@@ -52,4 +52,8 @@
 
   networking.firewall.allowedTCPPorts = [ 2049 ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "mongodb-ce"
+  ];
+
 }
