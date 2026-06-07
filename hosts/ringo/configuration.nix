@@ -25,7 +25,6 @@
       gh
       helix
       jujutsu
-      logseq
       neovim
       nushell
       obsidian
