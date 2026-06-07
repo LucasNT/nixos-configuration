@@ -8,7 +8,7 @@
     dbpath = "/files/application/mongodb";
     enableAuth = true;
     initialScript = /home/mongoInitialScript;
-    initialRootPasswordFile = /home/mongoPassword;
+    initialRootPasswordFile = "/home/mongoPassword";
     package = pkgs.mongodb-ce;
   };
 }
