@@ -126,7 +126,11 @@ in {
 
     LucasNT.qmk.enable = cfg.enableQmk;
 
-    networking.wireless.enable = lib.mkDefault cfg.isNotebook;
+    networking.wireless = lib.mkIf cfg.isNotebook {
+      enable = true;
+      allowAuxiliaryImperativeNetworks = true;
+      userControlled = true;
+    };
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     nix.gc = {
@@ -200,7 +204,7 @@ in {
 
     users.users."${cfg.username}" = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "wifi_controller" ] ++ cfg.extraUserGroups;
+      extraGroups = [ "wheel" "wpa_supplicant" ] ++ cfg.extraUserGroups;
       packages = lib.mkMerge [
         cfg.defaultUserPackages
         cfg.extraUserPackages

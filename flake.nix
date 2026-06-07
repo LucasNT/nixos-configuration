@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-26-05.url = "github:NixOS/nixpkgs/nixos-26.05";
     my_feed_notification = {
       url = "github:LucasNT/MyFeedNotification/main";
       inputs.nixpkgs.follows = "nixpkgs-25-11";
@@ -11,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-25-11, ... }@inputs: {
+  outputs = { self, nixpkgs-26-05, nixpkgs-25-11, ... }@inputs: {
 
     nixosConfigurations = {
       vm-nixos = let
@@ -34,7 +35,7 @@
           swaylock-wrapper =
             inputs.swaylock-wrapper.packages.x86_64-linux.default;
         };
-      in nixpkgs-25-11.lib.nixosSystem {
+      in nixpkgs-26-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";
         modules = [
