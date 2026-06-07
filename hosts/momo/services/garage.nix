@@ -2,7 +2,7 @@
 {
   services.garage = {
     enable = true;
-    environmentFile = /home/garage.env;
+    environmentFile = "/home/garage.env";
     package = pkgs.garage_2;
     logLevel = "debug";
     settings = {
