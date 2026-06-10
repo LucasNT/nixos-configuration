@@ -34,7 +34,6 @@ in {
       jira-cli-go
       jujutsu
       kubectl
-      logseq
       my_feed_notification
       neovim
       nushell
