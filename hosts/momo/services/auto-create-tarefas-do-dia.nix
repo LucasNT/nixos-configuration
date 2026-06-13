@@ -1,9 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 1514 ];
   systemd.timers."auto-create-tarefas-do-dia" = {
-    watedBy = [ "timers.target" ];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "03:00:00";
       Unit = "auto-create-tarefas-do-dia";
