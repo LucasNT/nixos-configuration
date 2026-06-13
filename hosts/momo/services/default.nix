@@ -10,5 +10,6 @@
     ./jellyfin.nix
     ./garage.nix
     ./mongodb.nix
+    ./auto-create-tarefas-do-dia.nix
   ];
 }
