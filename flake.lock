@@ -3,7 +3,7 @@
     "my_feed_notification": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-25-11"
+          "nixpkgs-26-05"
         ]
       },
       "locked": {
@@ -21,29 +21,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-25-11": {
-      "locked": {
-        "lastModified": 1782847189,
-        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-26-05": {
       "locked": {
-        "lastModified": 1784280462,
-        "narHash": "sha256-DtoqIqM7VkR6NxAkcLpMwmi02USwWb3JdmNGLyhthc0=",
+        "lastModified": 1784432872,
+        "narHash": "sha256-n3gKTBIV4ZA5VQpUakffBe3KGu4+mhPoA34rrqS0GkA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "293d6abedf0478e681a4dfcfcb35b30fc796a32f",
+        "rev": "fd1462031fdee08f65fd0b4c6b64e22239a77870",
         "type": "github"
       },
       "original": {
@@ -53,18 +37,34 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1784497964,
+        "narHash": "sha256-vlHUuqAcbcH2RKmHbPiuQzbv1pnzzavXnI62RD0bqCU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "my_feed_notification": "my_feed_notification",
-        "nixpkgs-25-11": "nixpkgs-25-11",
         "nixpkgs-26-05": "nixpkgs-26-05",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "swaylock-wrapper": "swaylock-wrapper"
       }
     },
     "swaylock-wrapper": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-25-11"
+          "nixpkgs-26-05"
         ]
       },
       "locked": {
