@@ -1,33 +1,20 @@
 {
   inputs = {
-    nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-26-05.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my_feed_notification = {
       url = "github:LucasNT/MyFeedNotification/main";
-      inputs.nixpkgs.follows = "nixpkgs-25-11";
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
     };
     swaylock-wrapper = {
       url = "github:LucasNT/swaylock-wrapper";
-      inputs.nixpkgs.follows = "nixpkgs-25-11";
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
     };
   };
 
-  outputs = { self, nixpkgs-26-05, nixpkgs-25-11, ... }@inputs: {
+  outputs = { self, nixpkgs-26-05, nixpkgs-unstable, ... }@inputs: {
 
     nixosConfigurations = {
-      vm-nixos = let
-        username = "lucas";
-        specialArgs = { inherit username; };
-      in nixpkgs-25-11.lib.nixosSystem {
-        inherit specialArgs;
-        system = "x86_64-linux";
-        modules = [
-          { networking.hostName = "vm-test"; }
-          ./hosts/base/configuration.nix
-          ./hosts/vm-teste/configuration.nix
-        ];
-      };
-
       ringo = let
         username = "ringo";
         specialArgs = {
