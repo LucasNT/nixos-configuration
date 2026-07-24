@@ -43,17 +43,8 @@
     uid = 2005;
   };
 
-  users.users.mongodb = {
-    isSystemUser = true;
-    uid = 2006;
-  };
-
   system.stateVersion = lib.mkForce "25.05";
 
   networking.firewall.allowedTCPPorts = [ 2049 ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "mongodb-ce"
-  ];
 
 }

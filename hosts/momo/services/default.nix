@@ -9,6 +9,7 @@
     ./static-web-server.nix
     ./jellyfin.nix
     ./garage.nix
+    ./redis.nix
     ./auto-create-tarefas-do-dia.nix
   ];
 }
