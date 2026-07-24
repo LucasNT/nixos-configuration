@@ -7,8 +7,6 @@
     appendOnly = true;
     bind = "192.168.135.10";
     port = 64265;
-    settings = {
-      dir = "/files/application/redis/anytype";
-    };
+    settings. dir = lib.mkForce "/files/application/redis/anytype";
   };
 }
