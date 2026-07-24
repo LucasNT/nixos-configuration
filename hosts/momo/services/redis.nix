@@ -5,7 +5,7 @@
   services.redis.servers.anytype = {
     enable = true;
     appendOnly = true;
-    bind = "192.168.135.10";
+    bind = "0.0.0.0";
     port = 44265;
     settings. dir = lib.mkForce "/files/application/redis/anytype";
   };
