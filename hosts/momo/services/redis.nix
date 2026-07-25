@@ -6,6 +6,6 @@
     appendOnly = true;
     bind = "0.0.0.0";
     port = 44265;
-    openFirewal = true;
+    openFirewall = true;
   };
 }
