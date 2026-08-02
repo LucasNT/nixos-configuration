@@ -88,11 +88,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785678889,
-        "narHash": "sha256-qoue8c3DWnQ7M3uCf5ud6O5gRDiwhMCXlm+W57B8ANE=",
+        "lastModified": 1785699985,
+        "narHash": "sha256-GRt+QriNRfNVVasNNq61btsKUWOF4R25zyYwjw07aF0=",
         "owner": "LucasNT",
         "repo": "simple-go-uploader-file",
-        "rev": "3837f798f92adf655dd9370733b31283e7fc437f",
+        "rev": "a7f46dfcee0efdd6d1ab84a22b7e9395d30ead9c",
         "type": "github"
       },
       "original": {
