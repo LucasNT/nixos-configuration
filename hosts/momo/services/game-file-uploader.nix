@@ -6,7 +6,7 @@
     enable = true;
     serviceConfig = {
       Type = "simple";
-      User = "media";
+      User = "lucas";
       ExecStart = "${simple-go-uploader-file}/bin/simple-go-uploader-file --rootFolder /files/media/jogos";
     };
   };
