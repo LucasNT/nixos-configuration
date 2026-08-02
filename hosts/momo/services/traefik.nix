@@ -9,6 +9,7 @@
         web = {
           address = ":80";
           asDefault = true;
+          transport.respondingTimeouts.writeTimeout = "10m";
         };
         websecure = { address = ":443"; };
       };
