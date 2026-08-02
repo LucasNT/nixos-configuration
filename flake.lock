@@ -1,5 +1,23 @@
 {
   "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "my_feed_notification": {
       "inputs": {
         "nixpkgs": [
@@ -58,7 +76,29 @@
         "my_feed_notification": "my_feed_notification",
         "nixpkgs-26-05": "nixpkgs-26-05",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "simple-go-uploader-file": "simple-go-uploader-file",
         "swaylock-wrapper": "swaylock-wrapper"
+      }
+    },
+    "simple-go-uploader-file": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs-26-05"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785678889,
+        "narHash": "sha256-qoue8c3DWnQ7M3uCf5ud6O5gRDiwhMCXlm+W57B8ANE=",
+        "owner": "LucasNT",
+        "repo": "simple-go-uploader-file",
+        "rev": "3837f798f92adf655dd9370733b31283e7fc437f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LucasNT",
+        "repo": "simple-go-uploader-file",
+        "type": "github"
       }
     },
     "swaylock-wrapper": {
@@ -78,6 +118,21 @@
       "original": {
         "owner": "LucasNT",
         "repo": "swaylock-wrapper",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     }

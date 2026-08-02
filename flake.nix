@@ -10,6 +10,10 @@
       url = "github:LucasNT/swaylock-wrapper";
       inputs.nixpkgs.follows = "nixpkgs-26-05";
     };
+    simple-go-uploader-file = {
+      url = "github:LucasNT/simple-go-uploader-file";
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
+    };
   };
 
   outputs = { self, nixpkgs-26-05, nixpkgs-unstable, ... }@inputs: {
@@ -54,7 +58,10 @@
 
       momo = let
         username = "lucas";
-        specialArgs = { inherit username; };
+        specialArgs = {
+          inherit username;
+          simple-go-uploader-file = inputs.simple-go-uploader-file.packages.x86_64-linux.default;
+        };
       in nixpkgs-26-05.lib.nixosSystem {
         inherit specialArgs;
         system = "x86_64-linux";

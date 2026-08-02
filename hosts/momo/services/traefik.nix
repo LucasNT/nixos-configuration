@@ -55,6 +55,11 @@
           service = "jogos";
           entryPoints = [ "web" ];
         };
+        jogos_uploader = {
+          rule = "Host(`games.local`) && Path(`/upload`)";
+          service = "jogos_uploader";
+          entryPoints = [ "web" ];
+        };
         jellyfin = {
           rule = "Host(`streamer.local`)";
           service = "jellyfin";
@@ -82,6 +87,9 @@
         };
         jogos = {
           loadBalancer = { servers = [{ url = "http://localhost:8787"; }]; };
+        };
+        jogos_uploader = {
+          loadBalancer = { servers = [{ url = "http://localhost:8080"; }]; }; 
         };
         jellyfin = {
           loadBalancer = {

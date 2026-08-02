@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, simple-go-uploader-file,  ... }:
 
 {
   imports =
