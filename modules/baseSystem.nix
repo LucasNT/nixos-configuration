@@ -154,6 +154,8 @@ in {
       rtkit.enable = true;
     };
 
+    services.gnome.gcr-ssh-agent.enable = false;
+
     services.libinput.enable = !cfg.isServer;
 
     services.logind = lib.mkIf (cfg.isNotebook) {
