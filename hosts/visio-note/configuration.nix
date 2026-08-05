@@ -26,7 +26,7 @@ in {
       borgbackup
       chromium
       devenv
-      discord-canary
+      discord
       gdk
       gh
       gimp
