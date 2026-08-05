@@ -228,7 +228,7 @@ in {
           wl-clipboard
           wlr-randr
           xdg-utils
-          xorg.xrdb
+          xrdb
           xwayland-satellite
         ]))
         (lib.lists.optionals cfg.addAllPackgesForNvim
