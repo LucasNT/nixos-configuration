@@ -3,7 +3,7 @@
 {
   systemd.services."game-file-uploader" = {
     after = ["network-online.target"];
-    wants=["network-online.target"];
+    wantedBy = [ "multi-user.target" ];
     enable = true;
     serviceConfig = {
       Type = "simple";
