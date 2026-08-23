@@ -200,12 +200,17 @@ in {
       };
     };
 
-    systemd.user.services.niri-swaybg.service = lib.mkIf (!cfg.isServer) {
+    systemd.user.services.niri = lib.mkIf (!cfg.isServer) {
+      wants = [ "niri-swaybg.service" ] ;
+    };
+
+    systemd.user.services.niri-swaybg = lib.mkIf (!cfg.isServer) {
       partOf = [ "graphical-session.target" ];
-      after = [ "graphical-session.taget" ];
-      require = [ "graphical-session.taget" ];
+      after = [ "graphical-session.target" ];
+      requires = [ "graphical-session.target" ];
+      enable = true;
       serviceConfig = {
-        ExecStart = "${pkgs.swaybg}/bin/swaybg -i ~/Imagens/planoDeFundo/103260037_p0.png -m fill";
+        ExecStart = "${pkgs.swaybg}/bin/swaybg -i %h/Imagens/planoDeFundo/103260037_p0.png -m fill";
         Restart = "on-failure";
       };
     };
