@@ -200,6 +200,16 @@ in {
       };
     };
 
+    systemd.user.services.niri-swaybg.service = lib.mkIf (!cfg.isServer) {
+      partOf = [ "graphical-session.target" ];
+      after = [ "graphical-session.taget" ];
+      require = [ "graphical-session.taget" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.swaybg}/bin/swaybg -i ~/Imagens/planoDeFundo/103260037_p0.png -m fill";
+        Restart = "on-failure";
+      };
+    };
+
     time.timeZone = lib.mkDefault "America/Sao_Paulo";
 
     users.groups.wifi_controller = lib.mkDefault { };
