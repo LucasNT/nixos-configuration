@@ -10,8 +10,6 @@ in {
       description = "Indicate that the system uses btrfs as filesystem";
     };
 
-    isServer = lib.mkEnableOption "is a server machine";
-
     isNotebook = lib.mkEnableOption "is a notebook";
 
     enableBackup = lib.mkEnableOption "Enable backup configurations";
@@ -37,12 +35,6 @@ in {
       type = lib.types.listOf lib.types.str;
       default = [ ];
       description = "Kernel Parameters";
-    };
-
-    extraFonts = lib.mkOption {
-      type = lib.types.listOf lib.types.package;
-      default = [ ];
-      description = "Extra fonts to install in the system";
     };
 
     extraUserGroups = lib.mkOption {
@@ -93,22 +85,7 @@ in {
     environment.systemPackages = with pkgs;
       [ vim wget curl tmux ] ++ cfg.extraEnvironmentPackage;
 
-    fonts = lib.mkIf (cfg.isServer == false) {
-      fontconfig.useEmbeddedBitmaps = true;
-      packages = with pkgs;
-        [
-          liberation_ttf
-          fira-code
-          fira-code-symbols
-          mplus-outline-fonts.githubRelease
-          noto-fonts
-          dina-font
-          proggyfonts
-          cascadia-code
-        ] ++ cfg.extraFonts;
-    };
 
-    hardware.graphics.enable = !cfg.isServer;
 
     hardware.bluetooth = lib.mkIf cfg.isNotebook {
       enable = true;
@@ -142,21 +119,10 @@ in {
 
     programs.git.enable = true;
 
-    programs.firefox.enable = lib.mkDefault (!cfg.isServer);
-
-    programs.niri.enable = !cfg.isServer;
-    programs.niri.useNautilus = lib.mkIf (!cfg.isServer) false;
-
-    programs.waybar.enable = !cfg.isServer;
-
     security = {
       polkit.enable = true;
       rtkit.enable = true;
     };
-
-    services.gnome.gcr-ssh-agent.enable = false;
-
-    services.libinput.enable = !cfg.isServer;
 
     services.logind = lib.mkIf (cfg.isNotebook) {
       settings.Login.HandleLidSwitch = lib.mkDefault "suspend";
@@ -175,46 +141,6 @@ in {
       usePercentageForPolicy = true;
     };
 
-    services.pipewire = lib.mkIf (!cfg.isServer) {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-      jack.enable = true;
-      wireplumber = {
-        extraConfig = {
-          "10-bluez" = {
-            "bluez5.enable-sbc-xq" = true;
-            "bluez5.enable-msbc" = true;
-            "bluez5.enable-hw-volume" = true;
-            "bluez5.roles" = [ "a2dp_sink" "a2dp_source" "hsp_hs" "hsp_ag" ];
-          };
-          "11-bluetooth-policy" = {
-            "wireplumber.settings" = {
-              "bluetooth.autoswitch-to-headset-profile" = false;
-            };
-          };
-        };
-      };
-    };
-
-    systemd.user.services.niri = lib.mkIf (!cfg.isServer) {
-      wants = [ "niri-swaybg.service" ] ;
-    };
-
-    systemd.user.services.niri-swaybg = lib.mkIf (!cfg.isServer) {
-      partOf = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      requires = [ "graphical-session.target" ];
-      enable = true;
-      serviceConfig = {
-        ExecStart = "${pkgs.swaybg}/bin/swaybg -i %h/Imagens/planoDeFundo/103260037_p0.png -m fill";
-        Restart = "on-failure";
-      };
-    };
-
     time.timeZone = lib.mkDefault "America/Sao_Paulo";
 
     users.groups.wifi_controller = lib.mkDefault { };
@@ -225,49 +151,12 @@ in {
       packages = lib.mkMerge [
         cfg.defaultUserPackages
         cfg.extraUserPackages
-        (lib.lists.optionals (!cfg.isServer) (with pkgs; [
-          alacritty
-          bash-language-server
-          brightnessctl
-          dunst
-          fuzzel
-          grim
-          playerctl
-          rose-pine-cursor
-          rxvt-unicode
-          slurp
-          swappy
-          swaybg
-          swayidle
-          swaylock
-          wl-clipboard
-          wlr-randr
-          xdg-utils
-          xrdb
-          xwayland-satellite
-        ]))
         (lib.lists.optionals cfg.addAllPackgesForNvim
           (with pkgs; [ nodejs python3 gcc gnumake unzip go cargo nil ]))
       ];
       openssh.authorizedKeys.keys = cfg.userAuthrorizedKeys;
     };
 
-    xdg.portal = lib.mkIf (!cfg.isServer) {
-      enable = true;
-      config = {
-        niri = {
-          default = [ "gnome" "gtk" ];
-          "org.freedesktop.impl.portal.Access" = [ "gtk" ];
-          "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
-          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-          "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
-          "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
-        };
-      };
-      extraPortals =
-        [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
-    };
 
   };
 }

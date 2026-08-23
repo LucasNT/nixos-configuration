@@ -32,6 +32,7 @@
         modules = [
           { networking.hostName = "ringo"; }
           ./modules/baseSystem.nix
+          ./modules/graphical-interface.nix
           ./hosts/ringo/configuration.nix
         ];
       };

@@ -108,11 +108,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770340806,
-        "narHash": "sha256-MICcgql7t4sdthDKBUR+o1fB/dMHkSOml+ECZvwnekk=",
+        "lastModified": 1787521318,
+        "narHash": "sha256-wPjKxZpCQvUB8Axgt2C8l+60LLh6NSVHnux/lXPpL3E=",
         "owner": "LucasNT",
         "repo": "swaylock-wrapper",
-        "rev": "a181e7b9753c8196255f5f3570d9201d3debab94",
+        "rev": "91d3d5ad5f5df90317651b07008a9f885f1618e4",
         "type": "github"
       },
       "original": {

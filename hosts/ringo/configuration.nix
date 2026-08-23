@@ -3,9 +3,13 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
+  LucasNT.graphical-interface = {
+    enable = true;
+    extraFonts = [ ];
+  };
+
   LucasNT.system = {
     isBtrfs = true;
-    isServer = false;
     isNotebook = true;
     enableDocker = true;
     enableSSHD = true;
@@ -14,7 +18,6 @@
     username = username;
     extraEnvironmentPackage = [ ];
     bootKernelParams = [ "resume_offset=4233897" ];
-    extraFonts = [ ];
     extraUserPackages = with pkgs; [
       anytype
       bitwarden-cli
