@@ -7,10 +7,14 @@ let
 in {
   imports = [ ./hardware-configuration.nix ];
 
+  LucasNT.graphical-interface = {
+    enable = true;
+    extraFonts = [ ];
+  };
+
   LucasNT.system = {
     addAllPackgesForNvim = true;
     isBtrfs = true;
-    isServer = false;
     isNotebook = true;
     enableBackup = true;
     enableDocker = true;
@@ -18,7 +22,6 @@ in {
     enableQmk = true;
     username = username;
     extraEnvironmentPackage = [ ];
-    extraFonts = [ ];
     extraUserPackages = with pkgs; [
       anytype
       bash-language-server

@@ -52,6 +52,7 @@
         modules = [
           { networking.hostName = "visio-lucasNT"; }
           ./modules/baseSystem.nix
+          ./modules/graphical-interface.nix
           ./modules/updateSystem.nix
           ./hosts/visio-note/configuration.nix
         ];
