@@ -71,6 +71,11 @@
           service = "proxmox";
           entryPoints = [ "web" ];
         };
+        wifi_ap1 = {
+          rule = "Host(wifi_ap1.local)";
+          service = "wifi_ap1";
+          entryPoints = [ "web" ];
+        };
       };
       http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
       http.services = {
@@ -100,6 +105,11 @@
         proxmox = {
           loadBalancer = {
             servers = [{ url = "http://192.168.189.5:8006"; }];
+          };
+        };
+        wifi_ap1 = {
+          loadBalancer = {
+            servers = [{ url = "http://192.168.189.13"; }];
           };
         };
       };
