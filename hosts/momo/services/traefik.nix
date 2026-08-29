@@ -72,7 +72,7 @@
           entryPoints = [ "web" ];
         };
         wifi_ap1 = {
-          rule = "Host(wifi_ap1.local)";
+          rule = "Host(`wifi_ap1.local`)";
           service = "wifi_ap1";
           entryPoints = [ "web" ];
         };
