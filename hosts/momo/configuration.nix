@@ -6,7 +6,6 @@
 
   LucasNT.system = {
     isBtrfs = true;
-    isServer = true;
     isNotebook = false;
     enableDocker = false;
     enableSSHD = true;
