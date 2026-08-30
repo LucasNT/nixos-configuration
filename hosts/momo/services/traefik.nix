@@ -76,6 +76,11 @@
           service = "wifi_ap1";
           entryPoints = [ "web" ];
         };
+        wifi_st1 = {
+          rule = "Host(`wifi_st1.local`)";
+          service = "wifi_st1";
+          entryPoints = [ "web" ];
+        };
       };
       http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
       http.services = {
@@ -110,6 +115,11 @@
         wifi_ap1 = {
           loadBalancer = {
             servers = [{ url = "http://192.168.189.13"; }];
+          };
+        };
+        wifi_st1 = {
+          loadBalancer = {
+            servers = [{ url = "http://192.168.189.12"; }];
           };
         };
       };
