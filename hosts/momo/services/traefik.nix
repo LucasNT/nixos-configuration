@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   networking.firewall.allowedTCPPorts = [ 80 ];
@@ -11,13 +16,28 @@
           asDefault = true;
           transport.respondingTimeouts.readTimeout = "10m";
         };
-        websecure = { address = ":443"; };
+        websecure = {
+          address = ":443";
+          http.tls.certResolver = "letsencrypt";
+        };
       };
       log = {
         filePath = "${config.services.traefik.dataDir}/traefik.log";
         level = "INFO";
         maxBackups = 2;
         compress = true;
+      };
+      certificatesResolvers.letsencrypt.acme = {
+        email = "lucasntakahashi@gmail.com";
+        storage = "${config.services.traefik.dataDir}/acme.json";
+        dnsChallenge = {
+          provider = "porkbun";
+          delayBeforeCheck = 1;
+          resolver = [
+            "1.1.1.1"
+            "8.8.8.8"
+          ];
+        };
       };
       accessLog = {
         filePath = "${config.services.traefik.dataDir}/traefik_access.log";
@@ -81,55 +101,83 @@
           service = "wifi_st1";
           entryPoints = [ "web" ];
         };
+        hister = {
+          rule = "Host(`search.geladeira.moe`)";
+          service = "hister";
+          entryPoints = [ "websecure" ];
+        };
       };
-      http.serversTransports = { insecureTransport.insecureSkipVerify = true; };
+      http.serversTransports = {
+        insecureTransport.insecureSkipVerify = true;
+      };
       http.services = {
         transmission = {
-          loadBalancer = { servers = [{ url = "http://localhost:9091"; }]; };
+          loadBalancer = {
+            servers = [ { url = "http://localhost:9091"; } ];
+          };
         };
         navidrome = {
-          loadBalancer = { servers = [{ url = "http://localhost:4533"; }]; };
+          loadBalancer = {
+            servers = [ { url = "http://localhost:4533"; } ];
+          };
         };
         memos = {
-          loadBalancer = { servers = [{ url = "http://localhost:5230"; }]; };
+          loadBalancer = {
+            servers = [ { url = "http://localhost:5230"; } ];
+          };
         };
         alloy = {
-          loadBalancer = { servers = [{ url = "http://localhost:12346"; }]; };
+          loadBalancer = {
+            servers = [ { url = "http://localhost:12346"; } ];
+          };
         };
         jogos = {
-          loadBalancer = { servers = [{ url = "http://localhost:8787"; }]; };
+          loadBalancer = {
+            servers = [ { url = "http://localhost:8787"; } ];
+          };
         };
         jogos_uploader = {
-          loadBalancer = { servers = [{ url = "http://localhost:8080"; }]; }; 
+          loadBalancer = {
+            servers = [ { url = "http://localhost:8080"; } ];
+          };
+        };
+        hister = {
+          loadBalancer = {
+            servers = [ { url = "http://localhost:4433"; } ];
+          };
         };
         jellyfin = {
           loadBalancer = {
-            servers = [{ url = "http://localhost:8096"; }];
+            servers = [ { url = "http://localhost:8096"; } ];
           };
         };
         proxmox = {
           loadBalancer = {
-            servers = [{ url = "http://192.168.189.5:8006"; }];
+            servers = [ { url = "http://192.168.189.5:8006"; } ];
           };
         };
         wifi_ap1 = {
           loadBalancer = {
-            servers = [{ url = "http://192.168.189.13"; }];
+            servers = [ { url = "http://192.168.189.13"; } ];
           };
         };
         wifi_st1 = {
           loadBalancer = {
-            servers = [{ url = "http://192.168.189.12"; }];
+            servers = [ { url = "http://192.168.189.12"; } ];
           };
         };
       };
     };
   };
 
+  systemd.services.traefik.environment = {
+    PORKBUN_SECRET_API_KEY_FILE = "/home/porkbun_secret_key";
+    PORKBUN_API_KEY_FILE = "/home/porkbun_api_key";
+  };
+
   services.logrotate.enable = true;
-  services.logrotate.settings."${config.services.traefik.dataDir}/traefik_access.log" =
-    {
-      frequency = "daily";
-      rotate = 3;
-    };
+  services.logrotate.settings."${config.services.traefik.dataDir}/traefik_access.log" = {
+    frequency = "daily";
+    rotate = 3;
+  };
 }
