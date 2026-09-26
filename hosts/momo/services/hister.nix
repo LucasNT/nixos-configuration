@@ -13,6 +13,7 @@
     settings = {
       app = {
         public = false;
+        user_handling = true;
       };
       server = {
         address = "127.0.0.1:4433";
