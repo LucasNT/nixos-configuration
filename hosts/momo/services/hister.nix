@@ -9,7 +9,7 @@
   services.hister = {
     enable = true;
     dataDir = "/files/application/hister";
-    environmentFile = /home/hister.env;
+    environmentFile = /files/application/hister/hister.env;
     settings = {
       app = {
         public = false;
