@@ -171,10 +171,9 @@
   };
 
   systemd.services.traefik.environment = {
-    PORKBUN_SECRET_API_KEY_FILE = "/home/traefik/porkbun_secret_key";
-    PORKBUN_API_KEY_FILE = "/home/traefik/porkbun_api_key";
+    PORKBUN_SECRET_API_KEY_FILE = "/var/lib/traefik/secrets/porkbun_secret_key";
+    PORKBUN_API_KEY_FILE = "/var/lib/traefik/secrets/porkbun_api_key";
   };
-  systemd.services.traefik.serviceConfig.ReadWritePaths = [/var/lib/traefik /home/traefik];
 
   services.logrotate.enable = true;
   services.logrotate.settings."${config.services.traefik.dataDir}/traefik_access.log" = {
