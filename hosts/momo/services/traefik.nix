@@ -33,7 +33,7 @@
         dnsChallenge = {
           provider = "porkbun";
           delayBeforeCheck = 1;
-          resolver = [
+          resolvers = [
             "1.1.1.1"
             "8.8.8.8"
           ];
