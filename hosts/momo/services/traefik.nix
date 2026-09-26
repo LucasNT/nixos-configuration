@@ -6,7 +6,7 @@
 }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 80 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.traefik = {
     enable = true;
     staticConfigOptions = {
