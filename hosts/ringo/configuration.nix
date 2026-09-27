@@ -43,6 +43,10 @@
     resumeDevice = "/dev/disk/by-uuid/3c9e7185-0144-4202-a90d-4d856493250f";
   };
 
+  boot.extraModprobeConfig = ''
+    options rtw89pci disable_aspm_l1=y
+  '';
+
   fileSystems."/home/ringo/NAS" = {
     device = "192.168.189.10:/files/Lucas";
     fsType = "nfs";
