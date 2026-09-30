@@ -45,7 +45,10 @@
   };
 
   boot.extraModprobeConfig = ''
+    options rtw89_core disable_ps_mode=y
     options rtw89pci disable_aspm_l1=y
+    options rtw89pci disable_clkreq=y
+    options rtw89pci disable_aspm_l1ss=y
   '';
 
   fileSystems."/home/ringo/NAS" = {
