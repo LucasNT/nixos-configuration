@@ -36,6 +36,7 @@
       sox
       swaylock-wrapper
       wireguard-tools
+      prismlauncher
     ];
   };
 
