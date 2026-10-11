@@ -9,6 +9,11 @@
     configDir = "/files/media/config/config";
     dataDir = "/files/media/config/data";
     cacheDir = "/files/media/config/cache";
+    hardwareAcceleration = {
+      enable = true;
+      type = "vaapi";
+      device = "/dev/dri/renderD128";
+    };
   };
   environment.systemPackages = [
     pkgs.jellyfin
