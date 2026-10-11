@@ -23,7 +23,7 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  hardware.graphics.extraPackges = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
     intel-media-driver
   ];
 
