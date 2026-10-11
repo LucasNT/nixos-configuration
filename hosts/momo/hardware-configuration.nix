@@ -29,7 +29,7 @@
 
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-  # hardware.enableAllFirmware = true;
+  hardware.enableAllFirmware = true;
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/d9214feb-750e-44f6-9c63-0621bc6fb4ae"; }];
