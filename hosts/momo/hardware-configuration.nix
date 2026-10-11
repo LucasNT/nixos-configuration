@@ -23,6 +23,10 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
+  hardware.graphics.extraPackges = with pkgs; [
+    intel-media-driver
+  ];
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/d9214feb-750e-44f6-9c63-0621bc6fb4ae"; }];
 
