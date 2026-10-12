@@ -27,6 +27,8 @@
     intel-media-driver
   ];
 
+  hardware.graphics.enable = true;
+
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   swapDevices =

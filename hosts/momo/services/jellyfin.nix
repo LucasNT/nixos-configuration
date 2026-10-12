@@ -11,8 +11,6 @@
     cacheDir = "/files/media/config/cache";
     hardwareAcceleration = {
       enable = true;
-      type = "vaapi";
-      device = "/dev/dri/renderD128";
     };
   };
   environment.systemPackages = [
