@@ -11,6 +11,8 @@
     cacheDir = "/files/media/config/cache";
     hardwareAcceleration = {
       enable = true;
+      type = "vaapi";
+      device = "/dev/dri/renderD128";
     };
   };
   environment.systemPackages = [
@@ -19,5 +21,6 @@
     pkgs.jellyfin-ffmpeg
   ];
 
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD"; # or i965 for older GPUs
+  users.users.jellyfin.extraGroups = [ "render" ];
+  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
 }

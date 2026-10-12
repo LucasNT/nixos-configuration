@@ -23,14 +23,6 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver
-  ];
-
-  hardware.graphics.enable = true;
-
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
-
   swapDevices =
     [{ device = "/dev/disk/by-uuid/d9214feb-750e-44f6-9c63-0621bc6fb4ae"; }];
 

@@ -46,4 +46,15 @@
 
   networking.firewall.allowedTCPPorts = [ 2049 ];
 
+  # hardware, drivers and drivers configuration
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver
+  ];
+
+  hardware.graphics.enable = true;
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
+  boot.extraModprobeConfig = ''
+    options i915 enable_guc=2
+  '';
 }
