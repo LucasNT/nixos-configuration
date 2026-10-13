@@ -113,4 +113,10 @@ in {
 
   system.stateVersion = "24.11";
 
+  # hardware, drivers and drivers configuration
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver
+  ];
+
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 }
