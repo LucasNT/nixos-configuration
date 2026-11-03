@@ -144,11 +144,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793748265,
-        "narHash": "sha256-3pY3ApvKmaZoUcnZuHco16fX0uFUuCPnNon1fGY4g/c=",
+        "lastModified": 1793749753,
+        "narHash": "sha256-ix1J8DDAtGVfopv1auhZXmpG5vV+3J/6gIoDwnbjnfE=",
         "owner": "LucasNT",
         "repo": "TelegramHelperBot",
-        "rev": "e4ff563ca63b6a532fce7802eaf281e341f660b0",
+        "rev": "336c152b55e14e48d9c3019e8781a3dd5ba6d4bb",
         "type": "github"
       },
       "original": {
