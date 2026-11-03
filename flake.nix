@@ -73,7 +73,7 @@
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "momo"; }
-          inputs.telegram-helper-bot.nixosModules.telegramHelperBot
+          inputs.telegram-helper-bot.nixosModules.torrentHelperBot
           ./modules/baseSystem.nix
           ./modules/updateSystem.nix
           ./hosts/momo/configuration.nix

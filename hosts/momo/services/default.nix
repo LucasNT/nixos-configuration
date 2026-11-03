@@ -13,5 +13,6 @@
     ./auto-create-tarefas-do-dia.nix
     ./game-file-uploader.nix
     ./hister.nix
+    ./torrent-helper-bot.nix
   ];
 }
