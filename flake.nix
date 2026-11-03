@@ -14,6 +14,10 @@
       url = "github:LucasNT/simple-go-uploader-file";
       inputs.nixpkgs.follows = "nixpkgs-26-05";
     };
+    telegram-helper-bot = {
+      url = "github:LucasNT/TelegramHelperBot";
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
+    };
   };
 
   outputs = { self, nixpkgs-26-05, nixpkgs-unstable, ... }@inputs: {
@@ -69,6 +73,7 @@
         system = "x86_64-linux";
         modules = [
           { networking.hostName = "momo"; }
+          inputs.telegram-helper-bot.nixosModules.telegramHelperBot
           ./modules/baseSystem.nix
           ./modules/updateSystem.nix
           ./hosts/momo/configuration.nix

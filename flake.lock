@@ -77,7 +77,8 @@
         "nixpkgs-26-05": "nixpkgs-26-05",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "simple-go-uploader-file": "simple-go-uploader-file",
-        "swaylock-wrapper": "swaylock-wrapper"
+        "swaylock-wrapper": "swaylock-wrapper",
+        "telegram-helper-bot": "telegram-helper-bot"
       }
     },
     "simple-go-uploader-file": {
@@ -133,6 +134,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telegram-helper-bot": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-26-05"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793673314,
+        "narHash": "sha256-1JOEjTLXfTKco1yStg1gCUIsahJ8JhKVt83Ntw4KkW4=",
+        "owner": "LucasNT",
+        "repo": "TelegramHelperBot",
+        "rev": "7a7210a79031d45565403c1cb9cd3844caa8b1bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LucasNT",
+        "repo": "TelegramHelperBot",
         "type": "github"
       }
     }
