@@ -50,6 +50,7 @@ in {
       # unstable
       pkgs-unstable.claude-code
       pkgs-unstable.herdr
+      python3.withPackages
     ];
   };
 
