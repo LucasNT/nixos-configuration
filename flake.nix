@@ -43,8 +43,12 @@
 
       visio-lucasNT = let
         username = "lucas";
+        pkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
         specialArgs = {
-          inherit username;
+          inherit username pkgs-unstable;
           my_feed_notification =
             inputs.my_feed_notification.packages.x86_64-linux.default;
           swaylock-wrapper =

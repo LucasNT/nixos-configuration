@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, my_feed_notification, swaylock-wrapper, ... }:
+{ config, lib, pkgs, username, my_feed_notification, swaylock-wrapper, pkgs-unstable, ... }:
 
 let
   gdk = pkgs.google-cloud-sdk.withExtraComponents
@@ -47,6 +47,9 @@ in {
       swaylock-wrapper
       vesktop
       wireguard-tools
+      # unstable
+      pkgs-unstable.claude-code
+      pkgs-unstable.herdr
     ];
   };
 
